@@ -115,7 +115,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -297,8 +299,17 @@
         <h2 class="rs-h2">What clients say</h2>
         <p class="rs-lead">430+ Google reviews · 4.8★ rating · 600+ across all platforms</p>
       </div>
-      <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-      <div class="elfsight-app-27ba2164-9624-4923-84ac-869de3348ad8" data-elfsight-app-lazy></div>
+      <div class="elfsight-app-27ba2164-9624-4923-84ac-869de3348ad8" data-elfsight-app-lazy style="min-height:520px;"></div>
+      <script>
+      (function(){
+        var loaded=false;
+        function load(){ if(loaded)return; loaded=true; var t=document.createElement('script'); t.src='https://apps.elfsight.com/p/platform.js'; t.defer=true; document.body.appendChild(t); }
+        var el=document.querySelector('.elfsight-app-27ba2164-9624-4923-84ac-869de3348ad8');
+        if(!el||!('IntersectionObserver' in window)){ load(); return; }
+        var io=new IntersectionObserver(function(e){ if(e[0].isIntersecting){ io.disconnect(); load(); } },{rootMargin:'600px'});
+        io.observe(el);
+      })();
+      </script>
       <div style="text-align:center;margin-top:2rem;">
         <a class="rs-book" href="/reviews.html">See All Reviews</a>
       </div>
