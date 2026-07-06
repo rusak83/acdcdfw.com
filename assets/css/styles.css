@@ -1108,7 +1108,7 @@ h4 { font-size: 1.05rem; }
 .rs-strip { background:#001F92; color:#fff; }
 .rs-strip-in { display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px; padding:26px 40px; }
 .rs-strip-it { display:flex; align-items:center; gap:11px; }
-.rs-strip-it em { font-style:normal; font-size:24px; }
+.rs-strip-it em { font-style:normal; font-size:24px; width:34px; text-align:center; flex-shrink:0; line-height:1; }
 .rs-strip-it b { display:block; font-weight:800; font-size:17px; }
 .rs-strip-it small { font-size:12.5px; color:rgba(255,255,255,0.7); }
 
@@ -1177,7 +1177,7 @@ h4 { font-size: 1.05rem; }
 }
 @media (max-width:600px) {
   .acdc .wrap { padding:0 22px; }
-  .rs-hero { padding:64px 22px 72px; }
+  .rs-hero { padding:64px 22px 108px; }
   .rs-hero h1 { font-size:34px; }
   .rs-h2 { font-size:30px; }
   .rs-sect { padding:56px 0; }
