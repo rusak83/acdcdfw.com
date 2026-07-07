@@ -7,7 +7,7 @@
   // TODO(Victor): set to your Bitrix24 incoming webhook base URL, e.g.
   // 'https://yourportal.bitrix24.com/rest/1/xxxxxxxxxxxxxxxx'
   // Scope the webhook to CRM only when you create it — this URL is public (visible in page source).
-  var BITRIX_WEBHOOK_URL = '';
+  var BITRIX_WEBHOOK_URL = 'https://fusedfw.bitrix24.com/rest/1/3wth6hjav7e7r6x8';
   var BITRIX_ASSIGNED_BY_ID = 1; // Victor
   var FALLBACK_EMAIL = 'support@acdcdfw.com';
 
