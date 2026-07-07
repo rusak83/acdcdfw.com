@@ -1201,3 +1201,31 @@ h4 { font-size: 1.05rem; }
   .rs-actions .rs-book { display:none; }
   .rs-cta h2 { font-size:32px; }
 }
+
+/* ============================================================
+   Commercial page additions (2026-07-06): urgent mid-page CTA,
+   lead-form status, property-manager soft CTA.
+   ============================================================ */
+.urgent-cta { background: var(--color-surface); }
+.urgent-cta .contact-grid { align-items: center; }
+.urgent-copy .section-label { background: rgba(220,53,69,0.1); color: #dc3545; }
+.urgent-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0 28px; padding: 0; list-style: none; }
+.urgent-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; color: var(--color-dark); }
+.urgent-list li::before { content: '⚠'; color: #dc3545; flex-shrink: 0; font-size: 1rem; line-height: 1.4; }
+
+.lead-form-card { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 28px; box-shadow: 0 8px 28px rgba(15,23,42,0.06); }
+.lead-form-card h3 { margin: 0 0 6px; color: var(--color-primary); }
+.lead-form-card .lead-form-note { font-size: 0.85rem; color: var(--color-muted); margin: 0 0 18px; }
+.lead-form-status { display: none; font-size: 0.875rem; font-weight: 600; margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: rgba(34,197,94,0.1); color: #15803d; }
+.lead-form-status.is-visible { display: block; }
+.lead-form-status.is-error { background: rgba(220,53,69,0.1); color: #dc3545; }
+
+.pm-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; background: var(--color-surface-light, #f7f8ff); border: 1px solid var(--color-border-card, #dde3ff); border-radius: var(--radius); padding: 32px; }
+.pm-card-copy h3 { margin: 0 0 8px; color: var(--color-primary); }
+.pm-card-copy p { margin: 0; color: var(--color-muted); max-width: 480px; }
+.pm-card-actions { flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .pm-card { flex-direction: column; align-items: flex-start; }
+}

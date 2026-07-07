@@ -272,6 +272,7 @@
           leadName: formData.get('name') || '',
           leadPhone: formData.get('phone') || '',
           leadZip: formData.get('zip') || '',
+          leadBusiness: formData.get('business') || '',
           leadIssue: formData.get('issue') || formData.get('message') || ''
         };
         var dedupeKey = ['form_submit', window.location.pathname, payload.formId, payload.formAction, submitMode].join('|');
