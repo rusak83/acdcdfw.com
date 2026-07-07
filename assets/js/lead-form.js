@@ -19,6 +19,16 @@
     el.classList.add('is-visible');
   }
 
+  // GA4/GTM signal. Deliberately excludes name/phone — GA4's terms prohibit sending PII in event params.
+  function pushDataLayer(eventName, extra) {
+    if (!window.dataLayer) return;
+    window.dataLayer.push(Object.assign({
+      event: eventName,
+      lead_form_id: 'commercial-lead-form',
+      page_path: window.location.pathname
+    }, extra || {}));
+  }
+
   function mailtoFallback(data) {
     var subject = encodeURIComponent('Commercial service request — ' + (data.business || data.name));
     var body = encodeURIComponent(
@@ -72,6 +82,7 @@
 
         if (!BITRIX_WEBHOOK_URL) {
           // No webhook wired yet — hand off via email so the lead is never lost, and tell the user to also call.
+          pushDataLayer('lead_form_fallback', { fallback_reason: 'not_configured' });
           mailtoFallback(data);
           setStatus(form, 'Email drafted with your details — please send it, and call (469) 224-0577 for the fastest response.', false);
           if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request a Callback'; }
@@ -88,9 +99,11 @@
         }).then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
           .then(function (r) {
             if (!r.ok || !r.json || r.json.error || !r.json.result) throw new Error(r.json && r.json.error_description || 'bad response');
+            pushDataLayer('generate_lead', { lead_source: 'commercial_page_form' });
             form.reset();
             setStatus(form, "Got it — we'll call you back shortly. For anything urgent, call (469) 224-0577 directly.", false);
           }).catch(function () {
+            pushDataLayer('lead_form_fallback', { fallback_reason: 'network_error' });
             mailtoFallback(data);
             setStatus(form, "Couldn't reach our system — email drafted instead. Please also call (469) 224-0577 directly.", true);
           }).finally(function () {
