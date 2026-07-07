@@ -1,9 +1,14 @@
-/* Commercial lead form — submits to n8n webhook, falls back to mailto if unset/unreachable so no lead is ever silently lost. */
+/* Commercial lead form — creates a Bitrix24 CRM Lead directly via crm.lead.add (client-side webhook call).
+   Falls back to mailto if the webhook isn't configured or the request fails, so no lead is ever silently lost.
+   All field values sent to Bitrix are English-only by design — no Russian strings in this file. */
 (function () {
   'use strict';
 
-  // TODO(Victor): replace with the real n8n webhook URL once the workflow exists.
-  var LEAD_WEBHOOK_URL = '';
+  // TODO(Victor): set to your Bitrix24 incoming webhook base URL, e.g.
+  // 'https://yourportal.bitrix24.com/rest/1/xxxxxxxxxxxxxxxx'
+  // Scope the webhook to CRM only when you create it — this URL is public (visible in page source).
+  var BITRIX_WEBHOOK_URL = '';
+  var BITRIX_ASSIGNED_BY_ID = 1; // Victor
   var FALLBACK_EMAIL = 'support@acdcdfw.com';
 
   function setStatus(form, text, isError) {
@@ -23,6 +28,22 @@
       'Problem: ' + data.issue
     );
     window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
+  }
+
+  function bitrixLeadFields(data) {
+    // Every literal here is English — this is the actual data written into the CRM record.
+    return {
+      TITLE: 'Website lead — ' + data.business,
+      NAME: data.name,
+      COMPANY_TITLE: data.business,
+      PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
+      COMMENTS: 'Problem: ' + data.issue + '\nSubmitted from: ' + data.page,
+      SOURCE_ID: 'WEB',
+      SOURCE_DESCRIPTION: 'Commercial equipment repair page — lead form',
+      STATUS_ID: 'NEW',
+      ASSIGNED_BY_ID: BITRIX_ASSIGNED_BY_ID,
+      OPENED: 'Y'
+    };
   }
 
   function initLeadForms() {
@@ -49,28 +70,32 @@
         var submitBtn = form.querySelector('button[type="submit"]');
         if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
 
-        if (!LEAD_WEBHOOK_URL) {
-          // No backend wired yet — hand off via email so the lead is never lost, and tell the user to also call.
+        if (!BITRIX_WEBHOOK_URL) {
+          // No webhook wired yet — hand off via email so the lead is never lost, and tell the user to also call.
           mailtoFallback(data);
           setStatus(form, 'Email drafted with your details — please send it, and call (469) 224-0577 for the fastest response.', false);
           if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request a Callback'; }
           return;
         }
 
-        fetch(LEAD_WEBHOOK_URL, {
+        fetch(BITRIX_WEBHOOK_URL + '/crm.lead.add.json', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        }).then(function (res) {
-          if (!res.ok) throw new Error('bad status');
-          form.reset();
-          setStatus(form, "Got it — we'll call you back shortly. For anything urgent, call (469) 224-0577 directly.", false);
-        }).catch(function () {
-          mailtoFallback(data);
-          setStatus(form, "Couldn't reach our system — email drafted instead. Please also call (469) 224-0577 directly.", true);
-        }).finally(function () {
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request a Callback'; }
-        });
+          body: JSON.stringify({
+            fields: bitrixLeadFields(data),
+            params: { REGISTER_SONET_EVENT: 'Y' }
+          })
+        }).then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
+          .then(function (r) {
+            if (!r.ok || !r.json || r.json.error || !r.json.result) throw new Error(r.json && r.json.error_description || 'bad response');
+            form.reset();
+            setStatus(form, "Got it — we'll call you back shortly. For anything urgent, call (469) 224-0577 directly.", false);
+          }).catch(function () {
+            mailtoFallback(data);
+            setStatus(form, "Couldn't reach our system — email drafted instead. Please also call (469) 224-0577 directly.", true);
+          }).finally(function () {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request a Callback'; }
+          });
       });
     });
   }
