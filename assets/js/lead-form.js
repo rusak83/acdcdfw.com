@@ -30,11 +30,11 @@
   }
 
   function mailtoFallback(data) {
-    var subject = encodeURIComponent('Commercial service request — ' + (data.business || data.name));
+    var subject = encodeURIComponent('Service request — ' + (data.business || data.name));
     var body = encodeURIComponent(
       'Name: ' + data.name + '\n' +
       'Phone: ' + data.phone + '\n' +
-      'Business: ' + data.business + '\n' +
+      (data.business ? 'Business/Brand: ' + data.business + '\n' : '') +
       'Problem: ' + data.issue
     );
     window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
@@ -43,13 +43,13 @@
   function bitrixLeadFields(data) {
     // Every literal here is English — this is the actual data written into the CRM record.
     return {
-      TITLE: 'Website lead — ' + data.business,
+      TITLE: 'Website lead — ' + (data.business || data.name),
       NAME: data.name,
-      COMPANY_TITLE: data.business,
+      COMPANY_TITLE: data.business || undefined,
       PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
       COMMENTS: 'Problem: ' + data.issue + '\nSubmitted from: ' + data.page,
       SOURCE_ID: 'WEB',
-      SOURCE_DESCRIPTION: 'Commercial equipment repair page — lead form',
+      SOURCE_DESCRIPTION: (document.title.split('|')[0].trim() || 'Website') + ' — lead form',
       STATUS_ID: 'NEW',
       ASSIGNED_BY_ID: BITRIX_ASSIGNED_BY_ID,
       OPENED: 'Y'
@@ -72,7 +72,7 @@
           page: window.location.pathname
         };
 
-        if (!data.name || !data.phone || !data.business || !data.issue) {
+        if (!data.name || !data.phone || !data.issue) {
           setStatus(form, 'Please fill in every field so we can call you back fast.', true);
           return;
         }
