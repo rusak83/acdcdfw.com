@@ -100,6 +100,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script src="/assets/js/phone-tracking.js" defer></script>
+  <script src="/assets/js/lead-form.js" defer></script>
 </head>
 <body class="acdc">
 
@@ -160,6 +161,38 @@
         <a class="btn btn-secondary btn-lg" href="https://book.housecallpro.com/book/ACDC-HVAC--Appliance-Repair/53312602f0a846a9b9e0059cfb118440?v2=true" rel="noopener" target="_blank">
           Book Online
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container" style="max-width:600px">
+      <div class="section-header text-center">
+        <span class="section-label">Get a Callback</span>
+        <h2>Can't Call Right Now?</h2>
+        <p class="text-muted">Leave your info and we'll call you back &mdash; fast, even after hours.</p>
+      </div>
+      <div class="lead-form-card">
+        <form class="lead-form contact-form" id="lead-form-thermador-top">
+          <div class="form-group">
+            <label for="lead-name-thermador-top">Full name</label>
+            <input id="lead-name-thermador-top" type="text" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-phone-thermador-top">Phone</label>
+            <input id="lead-phone-thermador-top" type="tel" name="phone" placeholder="(469) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-business-thermador-top">Brand / model (if known)</label>
+            <input id="lead-business-thermador-top" type="text" name="business" placeholder="Model number, if known">
+          </div>
+          <div class="form-group">
+            <label for="lead-issue-thermador-top">What's happening?</label>
+            <textarea id="lead-issue-thermador-top" name="issue" placeholder="Not cooling, won't start, error code..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request a Callback</button>
+          <div class="lead-form-status" role="status" aria-live="polite"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -436,9 +469,42 @@
     </div>
   </section>
 
+  <section class="section section-white">
+    <div class="container" style="max-width:600px">
+      <div class="section-header text-center">
+        <span class="section-label">Get a Callback</span>
+        <h2>Ready When You Are</h2>
+        <p class="text-muted">Prefer not to call? Request a callback and we'll reach out.</p>
+      </div>
+      <div class="lead-form-card">
+        <form class="lead-form contact-form" id="lead-form-thermador-bottom">
+          <div class="form-group">
+            <label for="lead-name-thermador-bottom">Full name</label>
+            <input id="lead-name-thermador-bottom" type="text" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-phone-thermador-bottom">Phone</label>
+            <input id="lead-phone-thermador-bottom" type="tel" name="phone" placeholder="(469) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-business-thermador-bottom">Brand / model (if known)</label>
+            <input id="lead-business-thermador-bottom" type="text" name="business" placeholder="Model number, if known">
+          </div>
+          <div class="form-group">
+            <label for="lead-issue-thermador-bottom">What's happening?</label>
+            <textarea id="lead-issue-thermador-bottom" name="issue" placeholder="Not cooling, won't start, error code..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request a Callback</button>
+          <div class="lead-form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- === FOOTER === -->
+
 <footer class="rs-footer">
   <div class="wrap">
     <div class="rs-foot-grid">

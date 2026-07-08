@@ -105,6 +105,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script src="/assets/js/phone-tracking.js" defer></script>
+  <script src="/assets/js/lead-form.js" defer></script>
 </head>
 <body class="acdc">
 
@@ -164,6 +165,38 @@
         <a class="btn btn-secondary btn-lg" href="https://book.housecallpro.com/book/ACDC-HVAC--Appliance-Repair/53312602f0a846a9b9e0059cfb118440?v2=true" rel="noopener" target="_blank">
           Book Online
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container" style="max-width:600px">
+      <div class="section-header text-center">
+        <span class="section-label">Get a Callback</span>
+        <h2>Can't Call Right Now?</h2>
+        <p class="text-muted">Leave your info and we'll call you back &mdash; fast, even after hours.</p>
+      </div>
+      <div class="lead-form-card">
+        <form class="lead-form contact-form" id="lead-form-kitchenaid-top">
+          <div class="form-group">
+            <label for="lead-name-kitchenaid-top">Full name</label>
+            <input id="lead-name-kitchenaid-top" type="text" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-phone-kitchenaid-top">Phone</label>
+            <input id="lead-phone-kitchenaid-top" type="tel" name="phone" placeholder="(469) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-business-kitchenaid-top">Brand / model (if known)</label>
+            <input id="lead-business-kitchenaid-top" type="text" name="business" placeholder="Model number, if known">
+          </div>
+          <div class="form-group">
+            <label for="lead-issue-kitchenaid-top">What's happening?</label>
+            <textarea id="lead-issue-kitchenaid-top" name="issue" placeholder="Not cooling, won't start, error code..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request a Callback</button>
+          <div class="lead-form-status" role="status" aria-live="polite"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -424,9 +457,42 @@
     </div>
   </section>
 
+  <section class="section section-white">
+    <div class="container" style="max-width:600px">
+      <div class="section-header text-center">
+        <span class="section-label">Get a Callback</span>
+        <h2>Ready When You Are</h2>
+        <p class="text-muted">Prefer not to call? Request a callback and we'll reach out.</p>
+      </div>
+      <div class="lead-form-card">
+        <form class="lead-form contact-form" id="lead-form-kitchenaid-bottom">
+          <div class="form-group">
+            <label for="lead-name-kitchenaid-bottom">Full name</label>
+            <input id="lead-name-kitchenaid-bottom" type="text" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-phone-kitchenaid-bottom">Phone</label>
+            <input id="lead-phone-kitchenaid-bottom" type="tel" name="phone" placeholder="(469) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-business-kitchenaid-bottom">Brand / model (if known)</label>
+            <input id="lead-business-kitchenaid-bottom" type="text" name="business" placeholder="Model number, if known">
+          </div>
+          <div class="form-group">
+            <label for="lead-issue-kitchenaid-bottom">What's happening?</label>
+            <textarea id="lead-issue-kitchenaid-bottom" name="issue" placeholder="Not cooling, won't start, error code..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request a Callback</button>
+          <div class="lead-form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- === FOOTER === -->
+
 <footer class="rs-footer">
   <div class="wrap">
     <div class="rs-foot-grid">
