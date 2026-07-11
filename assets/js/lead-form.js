@@ -11,6 +11,19 @@
   var BITRIX_ASSIGNED_BY_ID = 1; // Victor
   var FALLBACK_EMAIL = 'support@acdcdfw.com';
 
+  // GA4 Measurement Protocol — direct server-reachable hit, sent only after Bitrix confirms the
+  // lead was actually created. Exists because analytics.google.com/g/collect (the normal
+  // gtag/GTM path used by pushDataLayer below) gets blocked by ad blockers/DNS filters for a real
+  // share of visitors (confirmed 2026-07-10: a real form submission created Bitrix lead #30009
+  // but 0 generate_lead events reached GA4 that day). www.google-analytics.com/mp/collect is a
+  // different endpoint that survives that blocking in testing, so it's used as a second, more
+  // reliable path — not a replacement for GTM, a backstop for when GTM's path gets dropped.
+  // Note: this API secret is write-only (can create noisy events, cannot read any data), and is
+  // necessarily public since it ships in client JS — accepted trade-off for a single-file fix
+  // with no separate backend/webhook system.
+  var GA4_MEASUREMENT_ID = 'G-3LR1C6XDEC';
+  var GA4_MP_API_SECRET = 'hfkn3EeIQ4-tUpURMlNjWQ';
+
   function setStatus(form, text, isError) {
     var el = form.querySelector('.lead-form-status');
     if (!el) return;
@@ -27,6 +40,47 @@
       lead_form_id: 'commercial-lead-form',
       page_path: window.location.pathname
     }, extra || {}));
+  }
+
+  function getCookie(name) {
+    var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  // Reads the real GA4 client_id from the _ga cookie so this hit links to the visitor's actual
+  // session/source/medium instead of showing up as an orphaned event. Falls back to a stored
+  // synthetic id only if _ga was never set (e.g. that cookie itself got blocked too) — still
+  // records the conversion, just without session attribution.
+  function getGA4ClientId() {
+    var ga = getCookie('_ga');
+    if (ga) {
+      var parts = ga.split('.');
+      if (parts.length >= 4) return parts[2] + '.' + parts[3];
+    }
+    var fallbackKey = 'ga4_mp_fallback_cid';
+    var stored = null;
+    try { stored = localStorage.getItem(fallbackKey); } catch (e) {}
+    if (stored) return stored;
+    var generated = 'srv.' + Date.now() + '.' + Math.floor(Math.random() * 1e9);
+    try { localStorage.setItem(fallbackKey, generated); } catch (e) {}
+    return generated;
+  }
+
+  function sendMeasurementProtocolHit(eventName, extra) {
+    try {
+      var body = JSON.stringify({
+        client_id: getGA4ClientId(),
+        events: [{
+          name: eventName,
+          params: Object.assign({ engagement_time_msec: '100' }, extra || {})
+        }]
+      });
+      fetch('https://www.google-analytics.com/mp/collect?measurement_id=' + GA4_MEASUREMENT_ID + '&api_secret=' + GA4_MP_API_SECRET, {
+        method: 'POST',
+        body: body,
+        keepalive: true
+      }).catch(function () {}); // best-effort — analytics must never block or break the actual lead
+    } catch (e) { /* same — never let this throw into the submit handler */ }
   }
 
   function mailtoFallback(data) {
@@ -100,6 +154,11 @@
           .then(function (r) {
             if (!r.ok || !r.json || r.json.error || !r.json.result) throw new Error(r.json && r.json.error_description || 'bad response');
             pushDataLayer('generate_lead', { lead_source: 'commercial_page_form' });
+            sendMeasurementProtocolHit('generate_lead', {
+              lead_source: 'commercial_page_form',
+              lead_form_id: 'commercial-lead-form',
+              lead_id: String(r.json.result)
+            });
             form.reset();
             setStatus(form, "Got it — we'll call you back shortly. For anything urgent, call (469) 224-0577 directly.", false);
           }).catch(function () {
