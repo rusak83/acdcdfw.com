@@ -200,9 +200,13 @@
       utm_campaign: utm.campaign || 'direct'
     });
 
+    var phoneNumberPattern = /\(\d{3}\)\s?\d{3}-\d{4}/;
+
     document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
       link.href = 'tel:' + phone;
-      if (link.textContent.match(/[\d\(\)\-\s]+/)) {
+      if (phoneNumberPattern.test(link.textContent)) {
+        link.textContent = link.textContent.replace(phoneNumberPattern, formattedPhone);
+      } else if (link.textContent.match(/[\d\(\)\-\s]+/)) {
         link.textContent = formattedPhone;
       }
     });
@@ -211,7 +215,9 @@
       if (el.tagName === 'A') {
         el.href = 'tel:' + phone;
       }
-      if (el.textContent.match(/[\d\(\)\-\s]+/)) {
+      if (phoneNumberPattern.test(el.textContent)) {
+        el.textContent = el.textContent.replace(phoneNumberPattern, formattedPhone);
+      } else if (el.textContent.match(/[\d\(\)\-\s]+/)) {
         el.textContent = formattedPhone;
       }
     });
