@@ -47,6 +47,46 @@
     return match ? decodeURIComponent(match[1]) : null;
   }
 
+  // Reads the current page's own UTM params, then falls back to whatever phone-tracking.js
+  // captured earlier this session (sessionStorage keys tracking_utm_*, 30-min TTL) — same shared
+  // contract phone-tracking.js already uses for the phone number, so a lead submitted on a page
+  // navigated to *after* the ad click (no UTM in that page's own URL) still attributes correctly.
+  function getUTMParams() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var fromURL = {
+      source: urlParams.get('utm_source') || '',
+      medium: urlParams.get('utm_medium') || '',
+      campaign: urlParams.get('utm_campaign') || ''
+    };
+    if (fromURL.source || fromURL.medium || fromURL.campaign) return fromURL;
+
+    try {
+      var timestamp = sessionStorage.getItem('tracking_utm_timestamp');
+      if (timestamp && Date.now() - parseInt(timestamp, 10) < 30 * 60 * 1000) {
+        return {
+          source: sessionStorage.getItem('tracking_utm_source') || '',
+          medium: sessionStorage.getItem('tracking_utm_medium') || '',
+          campaign: sessionStorage.getItem('tracking_utm_campaign') || ''
+        };
+      }
+    } catch (e) { /* sessionStorage unavailable — fall through to empty */ }
+
+    return fromURL;
+  }
+
+  // Maps to REAL Bitrix SOURCE_ID enum values only (verified via crm.status.list, entityId=SOURCE
+  // on this portal 2026-07-16) — Bitrix rejects/orphans values that aren't in that list, so this
+  // does not invent a value like "ADVERTISING" that doesn't exist there. Channels with no matching
+  // native source (Bing Ads, Facebook Ads, Home Depot/directories) stay 'WEB': the real channel
+  // detail lives in UTM_SOURCE/UTM_MEDIUM/UTM_CAMPAIGN below, not in this coarse bucket.
+  function getSourceId(utm) {
+    var source = (utm.source || '').toLowerCase();
+    var medium = (utm.medium || '').toLowerCase();
+    if (source === 'google' && medium === 'cpc') return '5'; // Google ADS
+    if (source === 'yelp') return '4'; // Yelp
+    return 'WEB';
+  }
+
   // Reads the real GA4 client_id from the _ga cookie so this hit links to the visitor's actual
   // session/source/medium instead of showing up as an orphaned event. Falls back to a stored
   // synthetic id only if _ga was never set (e.g. that cookie itself got blocked too) — still
@@ -95,6 +135,7 @@
   }
 
   function bitrixLeadFields(data) {
+    var utm = getUTMParams();
     // Every literal here is English — this is the actual data written into the CRM record.
     return {
       TITLE: 'Website lead — ' + (data.business || data.name),
@@ -102,8 +143,11 @@
       COMPANY_TITLE: data.business || undefined,
       PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
       COMMENTS: 'Problem: ' + data.issue + '\nSubmitted from: ' + data.page,
-      SOURCE_ID: 'WEB',
+      SOURCE_ID: getSourceId(utm),
       SOURCE_DESCRIPTION: (document.title.split('|')[0].trim() || 'Website') + ' — lead form',
+      UTM_SOURCE: utm.source || undefined,
+      UTM_MEDIUM: utm.medium || undefined,
+      UTM_CAMPAIGN: utm.campaign || undefined,
       STATUS_ID: 'NEW',
       ASSIGNED_BY_ID: BITRIX_ASSIGNED_BY_ID,
       OPENED: 'Y'

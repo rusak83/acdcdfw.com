@@ -77,6 +77,47 @@
     return null;
   }
 
+  // Persists the resolved UTM triple the same way the phone number is persisted above, so a lead
+  // form submitted on a page the visitor navigated to *after* the ad click (no UTM in that page's
+  // URL) still attributes correctly. Shared sessionStorage contract — lead-form.js reads these
+  // same keys instead of re-implementing this capture logic.
+  function saveUTMToSession(utm) {
+    try {
+      sessionStorage.setItem('tracking_utm_source', utm.source || '');
+      sessionStorage.setItem('tracking_utm_medium', utm.medium || '');
+      sessionStorage.setItem('tracking_utm_campaign', utm.campaign || '');
+      sessionStorage.setItem('tracking_utm_timestamp', Date.now());
+    } catch (e) {
+      console.warn('SessionStorage unavailable:', e);
+    }
+  }
+
+  function getUTMFromSession() {
+    try {
+      const timestamp = sessionStorage.getItem('tracking_utm_timestamp');
+      if (timestamp && Date.now() - parseInt(timestamp, 10) < 30 * 60 * 1000) {
+        return {
+          source: sessionStorage.getItem('tracking_utm_source') || '',
+          medium: sessionStorage.getItem('tracking_utm_medium') || '',
+          campaign: sessionStorage.getItem('tracking_utm_campaign') || ''
+        };
+      }
+    } catch (e) {
+      console.warn('SessionStorage unavailable:', e);
+    }
+    return null;
+  }
+
+  // URL params if this exact page view carries any, else whatever was captured earlier this
+  // session (e.g. the actual ad-landing page), else all-empty (direct/first-touch unknown).
+  function getEffectiveUTM() {
+    const urlUTM = getUTMParams();
+    const hasURLUTM = urlUTM.source || urlUTM.medium || urlUTM.campaign;
+    const effective = hasURLUTM ? urlUTM : (getUTMFromSession() || urlUTM);
+    saveUTMToSession(effective);
+    return effective;
+  }
+
   function formatPhone(phone) {
     const cleaned = phone.replace(/\D/g, '');
     if (cleaned.length === 11 && cleaned[0] === '1') {
@@ -176,6 +217,7 @@
   function replacePhoneNumbers() {
     const phone = getPhoneFromSession() || getPhoneNumber();
     savePhoneToSession(phone);
+    getEffectiveUTM(); // populates/refreshes the shared UTM session contract lead-form.js reads
 
     const formattedPhone = formatPhone(phone);
     const utm = getUTMParams();
@@ -195,9 +237,13 @@
       utm_campaign: utm.campaign || 'direct'
     });
 
+    const phoneNumberPattern = /\(\d{3}\)\s?\d{3}-\d{4}/;
+
     document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
       link.href = `tel:${phone}`;
-      if (link.textContent.match(/[\d\(\)\-\s]+/)) {
+      if (phoneNumberPattern.test(link.textContent)) {
+        link.textContent = link.textContent.replace(phoneNumberPattern, formattedPhone);
+      } else if (link.textContent.match(/[\d\(\)\-\s]+/)) {
         link.textContent = formattedPhone;
       }
     });
@@ -206,7 +252,11 @@
       if (element.tagName === 'A') {
         element.href = `tel:${phone}`;
       }
-      element.textContent = formattedPhone;
+      if (phoneNumberPattern.test(element.textContent)) {
+        element.textContent = element.textContent.replace(phoneNumberPattern, formattedPhone);
+      } else {
+        element.textContent = formattedPhone;
+      }
     });
 
     console.log('Phone tracking active', {
