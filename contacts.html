@@ -21,6 +21,8 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script src="/assets/js/phone-tracking.js" defer></script>
+  <script src="/assets/js/lead-form.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,7 +65,6 @@
     }
   }
   </script>
-  <script src="/assets/js/phone-tracking.js" defer></script>
 </head>
 <body class="acdc">
 <!-- Google Tag Manager (noscript) -->
@@ -96,54 +97,146 @@
 </header>
 
   <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Contact ACDC Home Services</h1>
+        <p class="hero-subtitle">Premium appliance repair, refrigeration, and HVAC across Dallas-Fort Worth. Same-day service, flat-rate quotes before any work begins.</p>
+        <div class="hero-badges">
+          <span class="hero-badge">4.8 Google Rating (430+)</span>
+          <span class="hero-badge">Same-Day Availability</span>
+          <span class="hero-badge">7 Years Experience</span>
+        </div>
+        <div class="hero-cta-row">
+          <a class="btn btn-primary btn-lg" href="tel:+14692240577" data-location="contacts.html-hero">Call (469) 224-0577</a>
+          <a class="btn btn-secondary btn-lg" href="https://book.housecallpro.com/book/ACDC-HVAC--Appliance-Repair/53312602f0a846a9b9e0059cfb118440?v2=true" target="_blank" rel="noopener">Book Online</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="card">
+            <h2 style="margin-top:0;">Reach Us Directly</h2>
+            <p style="font-size:1.15rem;">
+              ☎ <a href="tel:+14692240577">(469) 224-0577</a><br>
+              ✉ <a href="mailto:support@acdcdfw.com">support@acdcdfw.com</a><br>
+              📍 Grapevine, TX 76051
+            </p>
+
+            <h3>Hours</h3>
+            <p>
+              Monday – Friday: 8:00 AM – 6:00 PM<br>
+              Saturday: 9:00 AM – 4:00 PM<br>
+              Sunday: Closed (emergency calls accepted)
+            </p>
+
+            <h3>How It Works</h3>
+            <ol>
+              <li>Call or book online with your appliance brand and issue.</li>
+              <li>We confirm a service window — usually same day or next.</li>
+              <li>Diagnostic visit ($90) — waived when you approve the repair.</li>
+              <li>You get a written estimate before any work starts.</li>
+              <li>Parts, labor, and warranty terms included on the invoice.</li>
+            </ol>
+          </div>
+
+          <div class="lead-form-card">
+            <h3>Can't Call Right Now?</h3>
+            <p class="lead-form-note">Request a callback — we respond fast, even after hours.</p>
+            <form class="lead-form contact-form" id="contacts-lead-form">
+              <div class="form-group">
+                <label for="lead-name">Full name</label>
+                <input id="lead-name" type="text" name="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="form-group">
+                <label for="lead-phone">Phone</label>
+                <input id="lead-phone" type="tel" name="phone" placeholder="(469) 000-0000" required>
+              </div>
+              <div class="form-group">
+                <label for="lead-business">Brand / model (if known)</label>
+                <input id="lead-business" type="text" name="business" placeholder="Sub-Zero, Samsung, etc.">
+              </div>
+              <div class="form-group">
+                <label for="lead-issue">What's happening?</label>
+                <textarea id="lead-issue" name="issue" placeholder="Not cooling since this morning..." required></textarea>
+              </div>
+              <div class="form-group form-group-consent">
+                <label class="consent-check">
+                  <input type="checkbox" name="sms_consent" required>
+                  <span>By checking this box, I consent to receive text messages (appointment updates, service reminders, and occasional promotional offers) from AC-DC HVAC &amp; Appliance Repair LLC at the phone number provided above. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="/sms-terms.html" target="_blank" rel="noopener">SMS Terms &amp; Conditions</a>.</span>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Request a Callback</button>
+              <div class="lead-form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Repair</span>
+          <h2>Appliances, Refrigeration &amp; HVAC</h2>
+        </div>
+        <div class="service-grid">
+          <div class="card"><h3>Premium Refrigerators</h3><p>Sub-Zero, Viking, Wolf, Thermador, KitchenAid, JennAir, GE Monogram, Dacor.</p></div>
+          <div class="card"><h3>Wine Coolers</h3><p>Built-in and freestanding beverage units — temperature-control specialists.</p></div>
+          <div class="card"><h3>Commercial Refrigeration</h3><p>Walk-ins, reach-ins, and ice machines for restaurants and hotels.</p></div>
+          <div class="card"><h3>Ranges, Ovens &amp; Cooktops</h3><p>Gas, electric, and induction — premium and standard brands.</p></div>
+          <div class="card"><h3>Dishwashers, Washers &amp; Dryers</h3><p>Not cleaning, not draining, not starting — fast diagnosis.</p></div>
+          <div class="card"><h3>Residential &amp; Light Commercial HVAC</h3><p>Diagnostics and maintenance for AC and heating systems.</p></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-white">
       <div class="container">
         <div class="section-header">
-          <h1>Contact ACDC Home Services</h1>
-          <p class="text-muted">Premium appliance repair, refrigeration, and HVAC across Dallas-Fort Worth. 4.8★ from 430+ reviews.</p>
+          <span class="section-label">Service Area</span>
+          <h2>Serving the Dallas-Fort Worth Metroplex</h2>
         </div>
+        <div class="city-grid">
+          <a class="city-chip" href="/locations/bedford.html">Bedford</a>
+          <a class="city-chip" href="/locations/carrollton.html">Carrollton</a>
+          <a class="city-chip" href="/locations/colleyville.html">Colleyville</a>
+          <a class="city-chip" href="/locations/coppell.html">Coppell</a>
+          <a class="city-chip" href="/locations/dallas.html">Dallas</a>
+          <a class="city-chip" href="/locations/euless.html">Euless</a>
+          <a class="city-chip" href="/locations/flower-mound.html">Flower Mound</a>
+          <a class="city-chip" href="/locations/grapevine.html">Grapevine</a>
+          <a class="city-chip" href="/locations/highland-park.html">Highland Park</a>
+          <a class="city-chip" href="/locations/highland-village.html">Highland Village</a>
+          <a class="city-chip" href="/locations/hurst.html">Hurst</a>
+          <a class="city-chip" href="/locations/irving.html">Irving</a>
+          <a class="city-chip" href="/locations/keller.html">Keller</a>
+          <a class="city-chip" href="/locations/southlake.html">Southlake</a>
+          <a class="city-chip" href="/locations/trophy-club.html">Trophy Club</a>
+          <a class="city-chip" href="/locations/university-park.html">University Park</a>
+          <a class="city-chip" href="/locations/westlake.html">Westlake</a>
+        </div>
+      </div>
+    </section>
 
-        <div class="card">
-          <h2 style="margin-top:0;">Call or Book</h2>
-          <p style="font-size:1.15rem;">
-            <strong>Phone:</strong> <a href="tel:+14692240577">(469) 224-0577</a><br>
-            <strong>Email:</strong> <a href="mailto:support@acdcdfw.com">support@acdcdfw.com</a>
-          </p>
-          <p>
-            <a class="btn-primary" href="https://book.housecallpro.com/book/ACDC-HVAC--Appliance-Repair/53312602f0a846a9b9e0059cfb118440?v2=true" target="_blank" rel="noopener">Book Online</a>
-          </p>
+    <section class="section">
+      <div class="container" style="max-width:680px">
+        <div class="card" style="text-align:center;">
+          <h2 style="margin-top:0;">Commercial Accounts</h2>
+          <p>Property managers, restaurants, and commercial operators with multiple locations — we offer Master Service Agreements with priority response and consolidated invoicing.</p>
+          <p>Email <a href="mailto:support@acdcdfw.com">support@acdcdfw.com</a> or call <a href="tel:+14692240577">(469) 224-0577</a> to discuss.</p>
+        </div>
+      </div>
+    </section>
 
-          <h2>Hours</h2>
-          <p>
-            Monday – Friday: 8:00 AM – 6:00 PM<br>
-            Saturday: 9:00 AM – 4:00 PM<br>
-            Sunday: Closed (emergency calls accepted)
-          </p>
-
-          <h2>What We Repair</h2>
-          <ul>
-            <li>Premium refrigerators (Sub-Zero, Viking, Wolf, Thermador, KitchenAid, JennAir, GE Monogram, Dacor)</li>
-            <li>Wine coolers and built-in beverage units</li>
-            <li>Commercial refrigeration: walk-ins, reach-ins, ice machines</li>
-            <li>Ranges, ovens, cooktops</li>
-            <li>Dishwashers, washers, dryers</li>
-            <li>Residential and light commercial HVAC</li>
-          </ul>
-
-          <h2>Service Area</h2>
-          <p>We service the Dallas-Fort Worth metroplex including Dallas, Fort Worth, Plano, Frisco, Southlake, Highland Park, University Park, Westlake, Colleyville, Grapevine, Keller, Trophy Club, Flower Mound, Highland Village, Coppell, Carrollton, Irving, Bedford, Hurst, and Euless.</p>
-
-          <h2>How It Works</h2>
-          <ol>
-            <li>Call or book online with your appliance brand and issue.</li>
-            <li>We confirm a service window — usually same day or next.</li>
-            <li>Diagnostic visit ($90) — waived when you approve the repair.</li>
-            <li>You get a written estimate before any work starts.</li>
-            <li>Parts, labor, and warranty terms included on the invoice.</li>
-          </ol>
-
-          <h2>Commercial Accounts</h2>
-          <p>Property managers, restaurants, and commercial operators with multiple locations — we offer Master Service Agreements with priority response and consolidated invoicing. Email <a href="mailto:support@acdcdfw.com">support@acdcdfw.com</a> or call <a href="tel:+14692240577">(469) 224-0577</a> to discuss.</p>
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Get Started?</h2>
+        <p>Call now for a fast diagnostic and flat-rate quote before any work starts.</p>
+        <div class="hero-cta-row">
+          <a class="btn btn-primary btn-lg" href="tel:+14692240577" data-location="contacts.html-bottom">Call (469) 224-0577</a>
+          <a class="btn btn-secondary btn-lg" href="https://book.housecallpro.com/book/ACDC-HVAC--Appliance-Repair/53312602f0a846a9b9e0059cfb118440?v2=true" target="_blank" rel="noopener">Book Online</a>
         </div>
       </div>
     </section>
@@ -203,5 +296,8 @@
     </div>
   </div>
 </footer>
+
+<a class="sticky-call" href="tel:+14692240577" data-location="sticky">Call Now — (469) 224-0577</a>
+<script defer src="/assets/js/main.js"></script>
 </body>
 </html>
