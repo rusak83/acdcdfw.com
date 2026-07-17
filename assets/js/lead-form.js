@@ -129,9 +129,20 @@
       'Name: ' + data.name + '\n' +
       'Phone: ' + data.phone + '\n' +
       (data.business ? 'Business/Brand: ' + data.business + '\n' : '') +
-      'Problem: ' + data.issue
+      'Problem: ' + data.issue + '\n' +
+      'SMS consent: given ' + data.consentTimestamp + ' from IP ' + data.consentIp
     );
     window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
+  }
+
+  // Best-effort public IP lookup for the SMS consent audit trail (name/phone/timestamp/IP kept
+  // together with the lead, same requirement as the original TCPA checkbox rollout). No API key,
+  // no PII sent to ipify beyond the request itself. Never blocks the lead on failure.
+  function getClientIP() {
+    return fetch('https://api.ipify.org?format=json')
+      .then(function (res) { return res.json(); })
+      .then(function (json) { return json.ip || 'unknown'; })
+      .catch(function () { return 'unknown'; });
   }
 
   function bitrixLeadFields(data) {
@@ -142,7 +153,8 @@
       NAME: data.name,
       COMPANY_TITLE: data.business || undefined,
       PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
-      COMMENTS: 'Problem: ' + data.issue + '\nSubmitted from: ' + data.page,
+      COMMENTS: 'Problem: ' + data.issue + '\nSubmitted from: ' + data.page +
+        '\nSMS consent: given ' + data.consentTimestamp + ' from IP ' + data.consentIp,
       SOURCE_ID: getSourceId(utm),
       SOURCE_DESCRIPTION: (document.title.split('|')[0].trim() || 'Website') + ' — lead form',
       UTM_SOURCE: utm.source || undefined,
@@ -167,6 +179,7 @@
           phone: (fd.get('phone') || '').toString().trim(),
           business: (fd.get('business') || '').toString().trim(),
           issue: (fd.get('issue') || '').toString().trim(),
+          consent: fd.get('sms_consent') === 'on',
           page: window.location.pathname
         };
 
@@ -175,43 +188,53 @@
           return;
         }
 
-        var submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-
-        if (!BITRIX_WEBHOOK_URL) {
-          // No webhook wired yet — hand off via email so the lead is never lost, and tell the user to also call.
-          pushDataLayer('lead_form_fallback', { fallback_reason: 'not_configured' });
-          mailtoFallback(data);
-          setStatus(form, 'Email drafted with your details — please send it, and call (469) 224-0577 for the fastest response.', false);
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request a Callback'; }
+        if (!data.consent) {
+          setStatus(form, 'Please check the SMS consent box so we can text you back.', true);
           return;
         }
 
-        fetch(BITRIX_WEBHOOK_URL + '/crm.lead.add.json', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            fields: bitrixLeadFields(data),
-            params: { REGISTER_SONET_EVENT: 'Y' }
-          })
-        }).then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
-          .then(function (r) {
-            if (!r.ok || !r.json || r.json.error || !r.json.result) throw new Error(r.json && r.json.error_description || 'bad response');
-            pushDataLayer('generate_lead', { lead_source: 'commercial_page_form' });
-            sendMeasurementProtocolHit('generate_lead', {
-              lead_source: 'commercial_page_form',
-              lead_form_id: 'commercial-lead-form',
-              lead_id: String(r.json.result)
-            });
-            form.reset();
-            setStatus(form, "Got it — we'll call you back shortly. For anything urgent, call (469) 224-0577 directly.", false);
-          }).catch(function () {
-            pushDataLayer('lead_form_fallback', { fallback_reason: 'network_error' });
+        var submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+        getClientIP().then(function (ip) {
+          data.consentIp = ip;
+          data.consentTimestamp = new Date().toISOString();
+
+          if (!BITRIX_WEBHOOK_URL) {
+            // No webhook wired yet — hand off via email so the lead is never lost, and tell the user to also call.
+            pushDataLayer('lead_form_fallback', { fallback_reason: 'not_configured' });
             mailtoFallback(data);
-            setStatus(form, "Couldn't reach our system — email drafted instead. Please also call (469) 224-0577 directly.", true);
-          }).finally(function () {
+            setStatus(form, 'Email drafted with your details — please send it, and call (469) 224-0577 for the fastest response.', false);
             if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request a Callback'; }
-          });
+            return;
+          }
+
+          fetch(BITRIX_WEBHOOK_URL + '/crm.lead.add.json', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields: bitrixLeadFields(data),
+              params: { REGISTER_SONET_EVENT: 'Y' }
+            })
+          }).then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
+            .then(function (r) {
+              if (!r.ok || !r.json || r.json.error || !r.json.result) throw new Error(r.json && r.json.error_description || 'bad response');
+              pushDataLayer('generate_lead', { lead_source: 'commercial_page_form' });
+              sendMeasurementProtocolHit('generate_lead', {
+                lead_source: 'commercial_page_form',
+                lead_form_id: 'commercial-lead-form',
+                lead_id: String(r.json.result)
+              });
+              form.reset();
+              setStatus(form, "Got it — we'll call you back shortly. For anything urgent, call (469) 224-0577 directly.", false);
+            }).catch(function () {
+              pushDataLayer('lead_form_fallback', { fallback_reason: 'network_error' });
+              mailtoFallback(data);
+              setStatus(form, "Couldn't reach our system — email drafted instead. Please also call (469) 224-0577 directly.", true);
+            }).finally(function () {
+              if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request a Callback'; }
+            });
+        });
       });
     });
   }
