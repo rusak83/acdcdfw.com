@@ -166,7 +166,40 @@
     };
   }
 
+  // Max 3 submissions per browser per hour — stops accidental double-submit and
+  // casual spam. Bots that clear localStorage skip this but hit the honeypot instead.
+  function checkRateLimit() {
+    var key = 'acdc_form_rl';
+    var maxPerHour = 3;
+    var windowMs = 60 * 60 * 1000;
+    try {
+      var stored = JSON.parse(localStorage.getItem(key) || '[]');
+      var now = Date.now();
+      var recent = stored.filter(function (t) { return now - t < windowMs; });
+      if (recent.length >= maxPerHour) return false;
+      recent.push(now);
+      localStorage.setItem(key, JSON.stringify(recent));
+      return true;
+    } catch (e) { return true; }
+  }
+
+  // Inject a hidden field into every lead form that human visitors never fill.
+  // Bots autofill it → we detect and silently discard the submission.
+  function injectHoneypotFields() {
+    document.querySelectorAll('form.lead-form').forEach(function (form) {
+      if (form.querySelector('.hp-wrap')) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'hp-wrap';
+      wrap.setAttribute('aria-hidden', 'true');
+      wrap.style.cssText = 'position:absolute;left:-9999px;height:0;overflow:hidden;pointer-events:none;';
+      wrap.innerHTML = '<input type="text" name="website" tabindex="-1" autocomplete="off" value="">';
+      form.appendChild(wrap);
+    });
+  }
+
   function initLeadForms() {
+    injectHoneypotFields();
+
     document.querySelectorAll('form.lead-form').forEach(function (form) {
       if (form.dataset.leadFormBound === 'true') return;
       form.dataset.leadFormBound = 'true';
@@ -174,6 +207,19 @@
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         var fd = new FormData(form);
+
+        // Honeypot — bots fill this field, humans don't
+        if ((fd.get('website') || '').toString().trim() !== '') {
+          setStatus(form, "Got it — we'll call you back shortly. For anything urgent, call (469) 224-0577 directly.", false);
+          return;
+        }
+
+        // Client-side rate limit
+        if (!checkRateLimit()) {
+          setStatus(form, 'Too many requests. Please call us directly at (469) 224-0577.', true);
+          return;
+        }
+
         var data = {
           name: (fd.get('name') || '').toString().trim(),
           phone: (fd.get('phone') || '').toString().trim(),
