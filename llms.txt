@@ -16,7 +16,7 @@
 
 - **Premium brands:** Sub-Zero, Wolf, Viking, Thermador, KitchenAid, JennAir, GE Monogram, Dacor, Miele, Bosch
 - **Standard brands:** Samsung, LG, Whirlpool, GE, Frigidaire, Maytag
-- **Appliances:** refrigerators (built-in, integrated, columns), freezers, ice makers, wine coolers, ranges, cooktops, wall ovens, dishwashers
+- **Appliances:** refrigerators (built-in, integrated, columns), freezers, ice makers, wine coolers, ranges, cooktops, wall ovens
 - **Refrigeration:** ice machines, walk-in coolers, walk-in freezers, commercial refrigeration
 - **HVAC:** diagnostics and repair
 - **Commercial:** restaurants, hotels, coworking spaces, retail (clients include IWG, Wingstop, Salata, Marriott). Preventive maintenance contracts from $349/year.
@@ -43,7 +43,6 @@
 - [Appliance Repair](https://acdcdfw.com/appliance-repair.html)
 - [Refrigerator Repair](https://acdcdfw.com/refrigerator-repair.html)
 - [Range and Oven Repair](https://acdcdfw.com/range-oven-repair.html)
-- [Dishwasher Repair](https://acdcdfw.com/dishwasher-repair.html)
 - [Wine Cooler Repair](https://acdcdfw.com/wine-cooler-repair.html)
 - [Ice Machine Repair](https://acdcdfw.com/ice-machine-repair.html)
 - [Commercial Equipment Repair](https://acdcdfw.com/commercial-equipment-repair.html)
