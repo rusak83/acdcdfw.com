@@ -68,6 +68,10 @@
 - [Hurst](https://acdcdfw.com/locations/hurst.html)
 - [Dallas](https://acdcdfw.com/locations/dallas.html)
 
+## Pricing
+
+- Structured pricing by brand and service category: https://acdcdfw.com/pricing.md
+
 ## Contact
 
 - Phone: (469) 224-0577
