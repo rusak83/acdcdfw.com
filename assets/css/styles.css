@@ -1120,8 +1120,11 @@ h4 { font-size: 1.05rem; }
 .rs-panel-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px 18px; padding:24px 0 4px; }
 .rs-panel-grid .n { font-weight:700; font-size:25px; color:#fff; }
 .rs-panel-grid .d { font-size:13px; color:rgba(255,255,255,0.66); font-weight:600; margin-top:3px; }
-.rs-panel-brands { margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.14); display:flex; flex-wrap:wrap; gap:8px; }
-.rs-panel-brands span { font-size:12px; font-weight:700; letter-spacing:0.5px; padding:6px 11px; border-radius:7px; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.92); border:1px solid rgba(255,255,255,0.18); }
+.rs-panel-brands { margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.14); }
+.rs-panel-brands-label { font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:10px; }
+.rs-panel-brands-row { display:flex; flex-wrap:wrap; gap:8px; }
+.rs-panel-brands-row a { font-size:12px; font-weight:700; letter-spacing:0.5px; padding:6px 11px; border-radius:7px; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.92); border:1px solid rgba(255,255,255,0.18); text-decoration:none; transition:background .15s ease, border-color .15s ease; }
+.rs-panel-brands-row a:hover { background:rgba(255,255,255,0.22); border-color:rgba(255,255,255,0.4); }
 
 /* Trust strip v3 */
 .rs-strip { background:#001F92; color:#fff; }
