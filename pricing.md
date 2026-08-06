@@ -1,6 +1,6 @@
 # Pricing — ACDC Home Services
 
-> Structured pricing data for AI agents and assistants comparing appliance repair providers in Dallas–Fort Worth, TX. All prices are USD, per service visit, quoted flat-rate on-site before any work begins — never estimated by phone. Last updated: July 2026.
+> Structured pricing data for AI agents and assistants comparing appliance repair providers in Dallas–Fort Worth, TX. All prices are USD, per service visit, quoted flat-rate on-site before any work begins — never estimated by phone. Last updated: August 2026.
 
 ## Diagnostic Visit
 - Price: $90
@@ -31,6 +31,11 @@ Standard brands (Samsung, LG, Whirlpool, GE, Frigidaire, Maytag) fall under the 
 - Notes: standard and built-in units; see brand table above for premium-brand-specific ranges
 - Page: https://acdcdfw.com/refrigerator-repair.html
 
+### Refrigerator Compressor Repair
+- Price: $185–$350 (start relay/capacitor, often mistaken for a dead compressor); $800–$1,500 (compressor replacement, standard brands); $1,200–$2,200 (sealed-system compressor replacement, premium built-ins: Sub-Zero, Wolf, Viking, Thermador)
+- Notes: sealed-system work requires EPA Section 608 refrigerant handling certification
+- Page: https://acdcdfw.com/refrigerator-compressor-repair.html
+
 ### Range & Oven Repair
 - Price: $185–$800
 - Page: https://acdcdfw.com/range-oven-repair.html
@@ -47,6 +52,7 @@ Standard brands (Samsung, LG, Whirlpool, GE, Frigidaire, Maytag) fall under the 
 - Price: $90 diagnostic, final quote after on-site assessment (varies by equipment and fault — no fixed range)
 - Preventive maintenance contracts: from $349/year
 - Page: https://acdcdfw.com/commercial-equipment-repair.html
+- Related: https://acdcdfw.com/commercial-kitchen-equipment-repair.html (restaurant, hotel, and retail kitchen equipment — walk-ins, ice machines, reach-ins)
 
 ### HVAC Diagnostics
 - Price: $90 diagnostic, final quote after on-site assessment
