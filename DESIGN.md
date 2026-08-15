@@ -139,7 +139,21 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
 > eyeball check. If a rule genuinely does not apply to the page, write why in the
 > commit message instead of silently skipping it.
 
-### A. Brand lock
+### A. Language — English only, no exceptions
+
+Everything that leaves this machine is English. Russian belongs in conversation, never in
+an artifact. This is a hard rule, not a preference: a stray Russian string in a public repo
+or a CRM record tells anyone reading it how the work was produced.
+
+- [ ] **No Cyrillic anywhere in the repository.** Check before every commit:
+      `grep -rlP '[\x{0400}-\x{04FF}]' --include=* . | grep -v '^./.git/'`
+- [ ] **Page content, alt text, meta tags, schema** — English.
+- [ ] **Code comments, variable names, TODOs** — English.
+- [ ] **Commit messages, branch names, PR titles and bodies** — English.
+- [ ] **Form field values and anything written into Bitrix** — English.
+      (`assets/js/lead-form.js` already states this contract at the top of the file. Keep it.)
+
+### B. Brand lock
 
 - [ ] **No red anywhere.** `grep -niE '#(dc2626|ef4444|e11d48|b91c1c|ff0000)|\bred\b' <file>`
 - [ ] **No retired amber as a brand accent.** `#f59e0b` is allowed ONLY inside `theme-warm`
@@ -149,7 +163,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
 - [ ] **No hardcoded hex where a token exists.** New CSS uses `var(--color-*)`, not literals.
 - [ ] **No lightning/bolt motif.** (Standing brand rule, easy to reintroduce by accident.)
 
-### B. Thermal theme
+### C. Thermal theme
 
 - [ ] **`<body>` carries the correct theme class** — `theme-cold` / `theme-warm` / `theme-neutral`
       per the table above. Refrigeration = cold, heat appliances = warm, everything else = neutral.
@@ -158,7 +172,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
 - [ ] **No warm/ember tint on a cold page.** Mirror check.
 - [ ] **Theme is locked for the whole page.** No mid-page flip from cold to warm.
 
-### C. Contrast (accessibility, non-negotiable)
+### D. Contrast (accessibility, non-negotiable)
 
 - [ ] **No yellow text on white or light gray.** Yellow is fill only.
 - [ ] **Every button label passes 4.5:1** against its own fill — including hover state.
@@ -167,7 +181,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
       against the section background they sit on.
 - [ ] **No ghost button over a photo** without a scrim behind it.
 
-### D. CTA discipline
+### E. CTA discipline
 
 - [ ] **One label per intent across the whole site.** Two intents exist and only two:
       **call** and **book online**. Every call CTA uses the identical string; every booking
@@ -179,7 +193,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
 - [ ] **No CTA label wraps to a second line** at desktop width.
 - [ ] **Phone number is byte-identical everywhere.** One format, no variants.
 
-### E. Copy honesty
+### F. Copy honesty
 
 - [ ] **No prices.** Company rule, no exceptions.
 - [ ] **No fabricated numbers.** Every figure on the page traces to something real —
@@ -193,7 +207,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
 - [ ] **Read every new sentence out loud once.** Kill AI filler, forced metaphors, and
       broken referents. Plain, functional, trustworthy.
 
-### F. Em-dash
+### G. Em-dash
 
 - [ ] **No `—` in headlines, eyebrows, buttons, nav, chips, or alt text.** It is the single
       most recognizable "written by AI" tell and these are the strings a visitor scans first.
@@ -202,7 +216,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
       > Site-wide count at the time this checklist was written: 993 in HTML, 35 in this file.
       > Treat that as a backlog to clean, not a blocker on unrelated work.
 
-### G. Layout
+### H. Layout
 
 - [ ] **Hero fits the first screen.** Headline ≤ 2 lines, subtext ≤ 20 words, CTA visible
       without scrolling on a 1440×900 desktop and on a 390×844 phone.
@@ -216,7 +230,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
       dividers — use cards, a 2-column group, or an accordion.
 - [ ] **One radius system.** New components use `--radius` or `--radius-pill`, nothing custom.
 
-### H. Motion & performance
+### I. Motion & performance
 
 - [ ] **`prefers-reduced-motion` is honored.** Any page with motion must degrade to static.
       > Known gap: `assets/css/styles.css` currently has no `@media (prefers-reduced-motion: reduce)`
@@ -230,7 +244,7 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
 - [ ] **Images:** WebP/AVIF, SEO filename, descriptive alt (brand + appliance + city),
       explicit `width`/`height` so nothing shifts on load.
 
-### I. SEO — never change silently
+### J. SEO — never change silently
 
 Any of these needs an explicit decision, not a drive-by edit:
 
@@ -243,7 +257,7 @@ Any of these needs an explicit decision, not a drive-by edit:
       does not exist.
 - [ ] **Schema markup** valid on pages that carry it.
 
-### J. Final
+### K. Final
 
 - [ ] **Rendered and looked at** at 1440px and 390px. Not just read as source.
 - [ ] **Nothing in the DO NOT list above was reintroduced.**
