@@ -1,7 +1,8 @@
 # DESIGN.md — ACDC Home Services (acdcdfw.com)
 
 > Source of truth for visual design. Claude Code: read this before touching any
-> page or `assets/css/styles.css`.
+> page or `assets/css/styles.css`, and run the **Pre-Flight Checklist** at the bottom
+> of this file before every commit that touches a page or the stylesheet.
 >
 > **Core idea — thermal design.** The visual temperature matches the appliance.
 > COLD treatment (blue + frost) belongs ONLY on refrigeration pages. Heat appliances
@@ -125,3 +126,124 @@ Subtle, dismissible, bottom-left, frosted-glass card. If no live data source wir
 - No fabricated reviews or fake "order" popups.
 - No prices on the site (company rule).
 - Don't apply COLD frost/ice outside refrigeration pages. Match visual temperature to the appliance: fridge = cold, range/oven/heating = warm, everything else = neutral.
+
+---
+
+# Pre-Flight Checklist
+
+> Run this before every commit that touches a page or `assets/css/styles.css`.
+> **Binary: one failed box means the work is not done.** Do not ship "mostly passing."
+> Check only the pages you changed, not the whole site.
+>
+> Each item is either mechanically checkable (command given, run it) or a 10-second
+> eyeball check. If a rule genuinely does not apply to the page, write why in the
+> commit message instead of silently skipping it.
+
+### A. Brand lock
+
+- [ ] **No red anywhere.** `grep -niE '#(dc2626|ef4444|e11d48|b91c1c|ff0000)|\bred\b' <file>`
+- [ ] **No retired amber as a brand accent.** `#f59e0b` is allowed ONLY inside `theme-warm`
+      atmosphere (glow/section tint), never as a CTA or brand accent.
+- [ ] **One accent color.** Electric yellow `--color-accent` is the only accent on the page.
+      No second competing accent introduced.
+- [ ] **No hardcoded hex where a token exists.** New CSS uses `var(--color-*)`, not literals.
+- [ ] **No lightning/bolt motif.** (Standing brand rule, easy to reintroduce by accident.)
+
+### B. Thermal theme
+
+- [ ] **`<body>` carries the correct theme class** — `theme-cold` / `theme-warm` / `theme-neutral`
+      per the table above. Refrigeration = cold, heat appliances = warm, everything else = neutral.
+- [ ] **No frost/ice outside `theme-cold`.** `grep -n 'frost\|--color-ice' <file>` on a warm or
+      neutral page must return nothing.
+- [ ] **No warm/ember tint on a cold page.** Mirror check.
+- [ ] **Theme is locked for the whole page.** No mid-page flip from cold to warm.
+
+### C. Contrast (accessibility, non-negotiable)
+
+- [ ] **No yellow text on white or light gray.** Yellow is fill only.
+- [ ] **Every button label passes 4.5:1** against its own fill — including hover state.
+      Navy-on-yellow and white-on-navy both pass; anything new gets measured, not guessed.
+- [ ] **Form inputs checked:** placeholder, label, focus ring, and error text all pass 4.5:1
+      against the section background they sit on.
+- [ ] **No ghost button over a photo** without a scrim behind it.
+
+### D. CTA discipline
+
+- [ ] **One label per intent across the whole site.** Two intents exist and only two:
+      **call** and **book online**. Every call CTA uses the identical string; every booking
+      CTA uses the identical string. Verify: `grep -rhoP '(?<=>)[^<>]{3,40}(?=</a>)' --include=*.html . | sort | uniq -c | sort -rn`
+      > Known open violation: the call CTA currently ships as three different strings —
+      > `Call (469) 224-0577`, `Call Now — (469) 224-0577`, and the
+      > `CALL US NOW — (469) 224-0577` variant specified in Components above. Pick one, then
+      > delete the other two from this file and from the site.
+- [ ] **No CTA label wraps to a second line** at desktop width.
+- [ ] **Phone number is byte-identical everywhere.** One format, no variants.
+
+### E. Copy honesty
+
+- [ ] **No prices.** Company rule, no exceptions.
+- [ ] **No fabricated numbers.** Every figure on the page traces to something real —
+      review counts, years in business, city counts, response times. If it cannot be sourced,
+      it does not ship. No invented percentages ("98% first-visit fix") and no invented
+      precision ("4.1× faster").
+- [ ] **Claims match real operations.** Business hours, service areas, same-day availability,
+      and brand coverage reflect what the company actually does today.
+- [ ] **No fabricated reviews and no fake live-booking popup.** The popup ships only when
+      wired to real Bitrix data.
+- [ ] **Read every new sentence out loud once.** Kill AI filler, forced metaphors, and
+      broken referents. Plain, functional, trustworthy.
+
+### F. Em-dash
+
+- [ ] **No `—` in headlines, eyebrows, buttons, nav, chips, or alt text.** It is the single
+      most recognizable "written by AI" tell and these are the strings a visitor scans first.
+      Check: `grep -n '—' <file>`
+      > Body copy is a judgment call, not a hard fail — some em-dashes there carry real meaning.
+      > Site-wide count at the time this checklist was written: 993 in HTML, 35 in this file.
+      > Treat that as a backlog to clean, not a blocker on unrelated work.
+
+### G. Layout
+
+- [ ] **Hero fits the first screen.** Headline ≤ 2 lines, subtext ≤ 20 words, CTA visible
+      without scrolling on a 1440×900 desktop and on a 390×844 phone.
+- [ ] **Nav renders on one line at desktop**, height stays at 68px per Components.
+- [ ] **Eyebrow restraint:** at most `ceil(sections / 3)` eyebrow labels per page.
+      Count: `grep -c 'rs-label' <file>` vs `grep -c '<section' <file>`
+      > Known open violation: `index.html` has 6 eyebrows across 8 sections; the cap is 3.
+- [ ] **Section variety:** no layout family repeats more than twice in a row. Three consecutive
+      image+text zigzags is a fail.
+- [ ] **Long lists get real UI.** More than 5 items does not ship as a plain `<ul>` with
+      dividers — use cards, a 2-column group, or an accordion.
+- [ ] **One radius system.** New components use `--radius` or `--radius-pill`, nothing custom.
+
+### H. Motion & performance
+
+- [ ] **`prefers-reduced-motion` is honored.** Any page with motion must degrade to static.
+      > Known gap: `assets/css/styles.css` currently has no `@media (prefers-reduced-motion: reduce)`
+      > block at all. Add one before shipping any new animation.
+- [ ] **Animate only `transform` and `opacity`.** Never `width`, `height`, `top`, `left`,
+      `margin`, or `padding`. Check: `grep -nE 'transition:[^;]*(width|height|top|left|right|bottom|margin|padding)' assets/css/styles.css`
+      (Colour and `background` transitions on hover are fine and already in use.)
+- [ ] **Motion is motivated.** Each animation communicates hierarchy, feedback, or state.
+      "It looked cool" is not a reason. No decorative loops, no falling snow.
+- [ ] **Use `100dvh`, never `100vh`** for full-height blocks — `100vh` jumps on iOS Safari.
+- [ ] **Images:** WebP/AVIF, SEO filename, descriptive alt (brand + appliance + city),
+      explicit `width`/`height` so nothing shifts on load.
+
+### I. SEO — never change silently
+
+Any of these needs an explicit decision, not a drive-by edit:
+
+- [ ] **URL structure unchanged**, or a redirect is in place.
+- [ ] **`<title>` and meta description** present, unique, and reviewed on every touched page.
+- [ ] **One `<h1>` per page.** Check: `grep -c '<h1' <file>`
+- [ ] **`sitemap.xml` updated** if a page was added, removed, or renamed.
+- [ ] **`llms.txt` updated** if services or pages changed.
+- [ ] **Internal links from related pages** point at any new page. A page nothing links to
+      does not exist.
+- [ ] **Schema markup** valid on pages that carry it.
+
+### J. Final
+
+- [ ] **Rendered and looked at** at 1440px and 390px. Not just read as source.
+- [ ] **Nothing in the DO NOT list above was reintroduced.**
