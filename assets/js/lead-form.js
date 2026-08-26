@@ -130,7 +130,9 @@
       'Phone: ' + data.phone + '\n' +
       (data.business ? 'Business/Brand: ' + data.business + '\n' : '') +
       'Problem: ' + data.issue + '\n' +
-      'SMS consent: given ' + data.consentTimestamp + ' from IP ' + data.consentIp
+      'SMS informational consent: ' + data.informationalConsent + '\n' +
+      'SMS marketing consent: ' + data.marketingConsent + '\n' +
+      'Consent given ' + data.consentTimestamp + ' from IP ' + data.consentIp
     );
     window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
   }
@@ -154,7 +156,9 @@
       COMPANY_TITLE: data.business || undefined,
       PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
       COMMENTS: 'Problem: ' + data.issue + '\nSubmitted from: ' + data.page +
-        '\nSMS consent: given ' + data.consentTimestamp + ' from IP ' + data.consentIp,
+        '\nSMS informational consent: ' + data.informationalConsent +
+        '\nSMS marketing consent: ' + data.marketingConsent +
+        '\nConsent given ' + data.consentTimestamp + ' from IP ' + data.consentIp,
       SOURCE_ID: getSourceId(utm),
       SOURCE_DESCRIPTION: (document.title.split('|')[0].trim() || 'Website') + ' — lead form',
       UTM_SOURCE: utm.source || undefined,
@@ -225,7 +229,8 @@
           phone: (fd.get('phone') || '').toString().trim(),
           business: (fd.get('business') || '').toString().trim(),
           issue: (fd.get('issue') || '').toString().trim(),
-          consent: fd.get('sms_consent') === 'on',
+          informationalConsent: fd.get('sms_informational_consent') === 'on',
+          marketingConsent: fd.get('sms_marketing_consent') === 'on',
           page: window.location.pathname
         };
 
@@ -234,7 +239,9 @@
           return;
         }
 
-        if (!data.consent) {
+        // Informational consent (appointment/service texts) is required to submit.
+        // Marketing consent is a separate, optional opt-in — never required.
+        if (!data.informationalConsent) {
           setStatus(form, 'Please check the SMS consent box so we can text you back.', true);
           return;
         }
