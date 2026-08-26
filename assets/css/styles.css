@@ -1232,6 +1232,59 @@ h4 { font-size: 1.05rem; }
 .consent-check span { font-size: 0.75rem; line-height: 1.45; color: var(--color-muted); }
 .consent-check a { color: var(--color-primary); text-decoration: underline; }
 
+/* === BOOKING MODAL (replaces HCP "Book Online" widget site-wide) === */
+.booking-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  z-index: 100000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+.booking-modal-overlay.is-open { display: flex; }
+body.booking-modal-lock { overflow: hidden; }
+
+.booking-modal {
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+}
+
+.booking-modal .lead-form-card { box-shadow: none; border: none; padding: 32px 28px 28px; }
+
+.booking-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--color-surface);
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.booking-modal-close:hover { background: var(--color-border); color: var(--color-dark); }
+
+@media (max-width: 640px) {
+  .booking-modal-overlay { padding: 0; align-items: flex-end; }
+  .booking-modal { max-width: 100%; max-height: 95vh; border-radius: var(--radius) var(--radius) 0 0; }
+}
+
 .pm-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; background: var(--color-surface-light, #f7f8ff); border: 1px solid var(--color-border-card, #dde3ff); border-radius: var(--radius); padding: 32px; }
 .pm-card-copy h3 { margin: 0 0 8px; color: var(--color-primary); }
 .pm-card-copy p { margin: 0; color: var(--color-muted); max-width: 480px; }
