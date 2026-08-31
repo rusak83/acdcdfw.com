@@ -1,10 +1,11 @@
-# ACDC Home Services
+# AC/DC Refrigeration & Appliance Repair
 
-> Expert appliance repair, refrigeration, and HVAC specialists serving the Dallas–Fort Worth (DFW) metroplex. Rated 4.8★ from 430+ Google reviews. Specialists in high-end and built-in brands (Sub-Zero, Wolf, Viking, Thermador) for luxury and custom homes. Same-day service available.
+> Commercial refrigeration and high-end appliance repair serving the Dallas–Fort Worth (DFW) metroplex. Walk-in coolers and freezers, commercial ice machines, reach-ins, and built-in residential appliances. Rated 4.8★ from 430+ Google reviews. Specialists in high-end and built-in brands (Sub-Zero, Wolf, Viking, Thermador) for luxury and custom homes. Same-day service available.
 
 ## Key facts
 
-- **Business:** ACDC Home Services (legal entity: AC-DC HVAC & Appliance Repair LLC)
+- **Business:** AC/DC Refrigeration & Appliance Repair (legal entity: AC-DC HVAC & Appliance Repair LLC; also operates under the umbrella brand ACDC Home Services)
+- **Address:** 501 Turner Rd #924, Grapevine, TX 76051, US
 - **Phone:** (469) 224-0577
 - **Service area:** Dallas–Fort Worth, TX — based in Grapevine (76051), serving Southlake, Westlake, Highland Park, University Park, Colleyville, Keller, Flower Mound, Trophy Club, Highland Village, Coppell, Carrollton, Irving, Grapevine, Bedford, Euless, Hurst, Dallas
 - **Rating:** 4.8 out of 5 stars, 430+ verified Google reviews
@@ -14,18 +15,33 @@
 - **Sunday:** Not closed-and-silent — the callback form accepts requests any time; Sunday submissions are scheduled first thing Monday.
 - **Experience:** 7 years specializing in high-end and built-in appliances
 
+## Commercial refrigeration (primary commercial service line)
+
+We are a commercial refrigeration contractor as well as an appliance repair company — these are different trades and most DFW appliance companies only do the second one.
+
+- **Walk-in coolers and walk-in freezers:** evaporator icing and defrost-cycle faults, condenser fouling, refrigerant leaks, compressor failure, stuck contactors, failed thermostats and temperature probes, blocked condensate drain lines, door gaskets and hinges, panel and threshold damage. Page: https://acdcdfw.com/walk-in-cooler-repair.html
+- **Commercial ice machines:** Scotsman, Manitowoc, Hoshizaki. Low or no production, scale and water-quality faults, harvest-cycle failures. Page: https://acdcdfw.com/ice-machine-repair.html
+- **Reach-in coolers and freezers, prep and sandwich tables, back-bar and undercounter units:** True, Traulsen, Beverage-Air, Turbo Air.
+- **Full back-of-house line:** https://acdcdfw.com/commercial-kitchen-equipment-repair.html
+- **Who we serve:** independent restaurants and bars, restaurant groups, hotels, grocery and convenience retail, coworking operators, corporate cafeterias, property and facility managers.
+- **Sealed-system work is performed in-house** — compressor replacement, refrigerant leak location and recovery, evaporator and condenser work — not subcontracted.
+- **Refrigerants:** legacy R-22 systems and current R-448A/R-449A and R-290 equipment. R-22 availability drives the repair-versus-replace decision on older walk-in condensing units.
+- **Preventive maintenance contracts:** from $349/year per location — scheduled coil cleaning, gasket and door inspection, temperature-log verification, drain-line service. This is the cheapest way to avoid an emergency call with a full box of product.
+- **Documentation:** a written service record is provided for each visit, usable for health-department follow-up and insurance or spoilage claims.
+
 ## What we repair
 
 - **High-end brands:** Sub-Zero, Wolf, Viking, Thermador, KitchenAid, JennAir, GE Monogram, Dacor, Miele, Bosch
 - **Standard brands:** Samsung, LG, Whirlpool, GE, Frigidaire, Maytag
 - **Appliances:** refrigerators (built-in, integrated, columns), freezers, ice makers, wine coolers, ranges, cooktops, wall ovens
-- **Refrigeration:** ice machines, walk-in coolers, walk-in freezers, commercial refrigeration
+- **Refrigeration:** walk-in coolers, walk-in freezers, commercial ice machines, reach-in coolers and freezers, prep tables (see the commercial section above)
 - **HVAC:** diagnostics and repair
 - **Commercial:** restaurants, hotels, coworking spaces, retail (clients include IWG, Wingstop, Salata, Marriott). Preventive maintenance contracts from $349/year.
 
-## Why ACDC
+## Why us
 
-- High-end and built-in specialists — not a general dispatch company. The owner diagnoses high-end units personally.
+- Commercial refrigeration and built-in appliance specialists — not a general dispatch company. The owner diagnoses units personally.
+- Sealed-system refrigeration work stays in-house rather than being handed to a subcontractor.
 - Flat-rate quote provided before any work begins — no surprise charges.
 - Honest assessment: if a repair doesn't make financial sense versus replacement, we say so.
 
@@ -47,6 +63,7 @@
 - [Refrigerator Compressor Repair](https://acdcdfw.com/refrigerator-compressor-repair.html) — compressor symptoms, real repair costs ($185-$2,200), and repair-vs-replace guidance
 - [Range and Oven Repair](https://acdcdfw.com/range-oven-repair.html)
 - [Wine Cooler Repair](https://acdcdfw.com/wine-cooler-repair.html)
+- [Walk-In Cooler Repair](https://acdcdfw.com/walk-in-cooler-repair.html) — commercial walk-in cooler and freezer repair for restaurants, bars, hotels and grocery: failure modes, emergency response, repair-vs-replace, maintenance contracts
 - [Ice Machine Repair](https://acdcdfw.com/ice-machine-repair.html)
 - [Commercial Equipment Repair](https://acdcdfw.com/commercial-equipment-repair.html)
 - [Commercial Kitchen Equipment Repair](https://acdcdfw.com/commercial-kitchen-equipment-repair.html) — restaurant, hotel, and retail kitchen equipment repair: walk-ins, ice machines, reach-ins
@@ -81,3 +98,7 @@
 - Phone: (469) 224-0577
 - Book online: https://book.housecallpro.com/book/ACDC-HVAC--Appliance-Repair/53312602f0a846a9b9e0059cfb118440?v2=true
 - Reviews: https://acdcdfw.com/reviews.html
+
+---
+
+*Last updated: 2026-08-31.*
