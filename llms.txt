@@ -45,6 +45,16 @@ We are a commercial refrigeration contractor as well as an appliance repair comp
 - Flat-rate quote provided before any work begins — no surprise charges.
 - Honest assessment: if a repair doesn't make financial sense versus replacement, we say so.
 
+## Guides and troubleshooting (blog)
+
+Symptom-first repair guides written by the technician who runs the calls. Each names the precise symptom, what an owner or operator can safely check, what the repair costs, and when repair stops making sense.
+
+- [Repair Guides Index](https://acdcdfw.com/blog/) — commercial refrigeration, ice machines, and built-in appliance troubleshooting
+- [Walk-In Cooler Not Holding Temperature](https://acdcdfw.com/blog/walk-in-cooler-not-holding-temperature.html) — the 41°F threshold and Texas Food Establishment Rules, the five real causes (fouled condenser, stuck defrost, doors and gaskets, refrigerant leak, contactor and start components), first-30-minutes checklist, repair-vs-re-power on aging condensing units
+- [Commercial Ice Machine Not Making Ice](https://acdcdfw.com/blog/commercial-ice-machine-not-making-ice.html) — Scotsman, Manitowoc, Hoshizaki. Symptom-to-cause table, water supply and filters, scale in hard North Texas water, condenser fouling and clearances, harvest-cycle failures, bin controls, maintenance intervals
+- [Thermador Oven Not Heating](https://acdcdfw.com/blog/thermador-oven-not-heating.html) — symptom-to-cause map for no heat, slow preheat, uneven browning; bake element vs temperature sensor vs hot-surface igniter vs relay board; self-clean as a common trigger; typical $300–$1,400 repair range
+- [Sub-Zero Refrigerator Not Cooling](https://acdcdfw.com/blog/sub-zero-not-cooling.html) — dirty condenser coils, evaporator fan and frost, door gaskets, sealed-system faults; DFW repair costs
+
 ## Brand pages
 
 - [Sub-Zero Repair](https://acdcdfw.com/sub-zero/)
@@ -65,7 +75,7 @@ We are a commercial refrigeration contractor as well as an appliance repair comp
 - [Wine Cooler Repair](https://acdcdfw.com/wine-cooler-repair.html)
 - [Walk-In Cooler Repair](https://acdcdfw.com/walk-in-cooler-repair.html) — commercial walk-in cooler and freezer repair for restaurants, bars, hotels and grocery: failure modes, emergency response, repair-vs-replace, maintenance contracts
 - [Ice Machine Repair](https://acdcdfw.com/ice-machine-repair.html)
-- [Commercial Equipment Repair](https://acdcdfw.com/commercial-equipment-repair.html)
+- [Commercial Equipment Repair](https://acdcdfw.com/commercial-equipment-repair.html) — the commercial hub: reach-ins, prep and sandwich tables, back-bar and undercounter refrigeration, merchandisers, plus failure modes, response times and truck stock, repair-vs-replace, and multi-site maintenance contracts
 - [Commercial Kitchen Equipment Repair](https://acdcdfw.com/commercial-kitchen-equipment-repair.html) — restaurant, hotel, and retail kitchen equipment repair: walk-ins, ice machines, reach-ins
 - [HVAC Diagnostics](https://acdcdfw.com/hvac-diagnostics.html)
 
