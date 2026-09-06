@@ -1294,3 +1294,44 @@ body.booking-modal-lock { overflow: hidden; }
   .contact-grid { grid-template-columns: 1fr; }
   .pm-card { flex-direction: column; align-items: flex-start; }
 }
+
+/* === Job photos (real service shots from the field) === */
+.job-photo { margin: 32px 0; }
+.job-photo img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border, #dbe4f1);
+  background: var(--color-surface, #f0f4f8);
+  object-fit: cover;
+}
+.job-photo figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-muted, #475569);
+}
+/* Portrait shots: constrain the width instead of cropping, so the whole frame shows */
+.job-photo-tall { max-width: 460px; margin-inline: auto; }
+.job-photo-tall img { object-fit: contain; }
+
+/* Photo beside copy — used in section intros */
+.job-photo-split {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 32px;
+  align-items: center;
+  margin: 32px 0;
+}
+.job-photo-split .job-photo { margin: 0; }
+.job-photo-split .job-photo-tall { max-width: 380px; }
+@media (max-width: 860px) {
+  .job-photo-split { grid-template-columns: 1fr; gap: 20px; }
+  .job-photo-tall { max-width: 100%; }
+}
+
+/* Breadcrumbs on a light background (blog articles) — the base rule is white,
+   built for the dark hero, and was rendering invisible here. */
+.section-white .breadcrumb,
+.section-white .breadcrumb a { color: var(--color-muted, #475569); }
+.section-white .breadcrumb a:hover { color: var(--color-primary, #001F92); }
+.section-white .breadcrumb-sep { color: var(--color-border, #dbe4f1); }
