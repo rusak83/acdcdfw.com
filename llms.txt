@@ -22,7 +22,6 @@ We are a commercial refrigeration contractor as well as an appliance repair comp
 - **Walk-in coolers and walk-in freezers:** evaporator icing and defrost-cycle faults, condenser fouling, refrigerant leaks, compressor failure, stuck contactors, failed thermostats and temperature probes, blocked condensate drain lines, door gaskets and hinges, panel and threshold damage. Page: https://acdcdfw.com/walk-in-cooler-repair.html
 - **Commercial ice machines:** Scotsman, Manitowoc, Hoshizaki. Low or no production, scale and water-quality faults, harvest-cycle failures. Page: https://acdcdfw.com/ice-machine-repair.html
 - **Reach-in coolers and freezers, prep and sandwich tables, back-bar and undercounter units:** True, Traulsen, Beverage-Air, Turbo Air.
-- **Full back-of-house line:** https://acdcdfw.com/commercial-kitchen-equipment-repair.html
 - **Who we serve:** independent restaurants and bars, restaurant groups, hotels, grocery and convenience retail, coworking operators, corporate cafeterias, property and facility managers.
 - **Sealed-system work is performed in-house** — compressor replacement, refrigerant leak location and recovery, evaporator and condenser work — not subcontracted.
 - **Refrigerants:** legacy R-22 systems and current R-448A/R-449A and R-290 equipment. R-22 availability drives the repair-versus-replace decision on older walk-in condensing units.
@@ -76,7 +75,6 @@ Symptom-first repair guides written by the technician who runs the calls. Each n
 - [Walk-In Cooler Repair](https://acdcdfw.com/walk-in-cooler-repair.html) — commercial walk-in cooler and freezer repair for restaurants, bars, hotels and grocery: failure modes, emergency response, repair-vs-replace, maintenance contracts
 - [Ice Machine Repair](https://acdcdfw.com/ice-machine-repair.html)
 - [Commercial Equipment Repair](https://acdcdfw.com/commercial-equipment-repair.html) — the commercial hub: reach-ins, prep and sandwich tables, back-bar and undercounter refrigeration, merchandisers, plus failure modes, response times and truck stock, repair-vs-replace, and multi-site maintenance contracts
-- [Commercial Kitchen Equipment Repair](https://acdcdfw.com/commercial-kitchen-equipment-repair.html) — restaurant, hotel, and retail kitchen equipment repair: walk-ins, ice machines, reach-ins
 - [HVAC Diagnostics](https://acdcdfw.com/hvac-diagnostics.html)
 
 ## Service areas (city pages)

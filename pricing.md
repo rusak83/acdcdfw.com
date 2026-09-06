@@ -69,7 +69,6 @@ Standard brands (Samsung, LG, Whirlpool, GE, Frigidaire, Maytag) fall under the 
 - Scope: reach-in coolers and freezers, prep and sandwich tables, back-bar and undercounter units, back-of-house kitchen line. True, Traulsen, Beverage-Air, Turbo Air
 - Preventive maintenance contracts: from $349/year per location
 - Page: https://acdcdfw.com/commercial-equipment-repair.html
-- Related: https://acdcdfw.com/commercial-kitchen-equipment-repair.html (restaurant, hotel, and retail kitchen equipment — walk-ins, ice machines, reach-ins)
 
 ### HVAC Diagnostics
 - Price: $90 diagnostic, final quote after on-site assessment
