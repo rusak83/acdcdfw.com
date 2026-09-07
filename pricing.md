@@ -84,5 +84,5 @@ Standard brands (Samsung, LG, Whirlpool, GE, Frigidaire, Maytag) fall under the 
 - Ranges reflect typical parts + labor for the stated category; individual jobs can fall outside these ranges depending on the specific fault.
 - Service area: Dallas–Fort Worth, TX (17 cities — see https://acdcdfw.com/llms.txt for the full list).
 - Commercial refrigeration is a separate service line from residential appliance repair; the diagnostic fee and flat-rate-quote rule are the same, but no price range is published for walk-in work.
-- Business: AC/DC Refrigeration & Appliance Repair, 501 Turner Rd #924, Grapevine, TX 76051
+- Business: AC/DC Refrigeration & Appliance Repair, based in Grapevine, TX 76051 (service-area business, no walk-in location)
 - Contact: (469) 224-0577 · https://acdcdfw.com/contacts.html
