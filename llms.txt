@@ -20,13 +20,48 @@
 We are a commercial refrigeration contractor as well as an appliance repair company — these are different trades and most DFW appliance companies only do the second one.
 
 - **Walk-in coolers and walk-in freezers:** evaporator icing and defrost-cycle faults, condenser fouling, refrigerant leaks, compressor failure, stuck contactors, failed thermostats and temperature probes, blocked condensate drain lines, door gaskets and hinges, panel and threshold damage. Page: https://acdcdfw.com/walk-in-cooler-repair.html
-- **Commercial ice machines:** Scotsman, Manitowoc, Hoshizaki. Low or no production, scale and water-quality faults, harvest-cycle failures. Page: https://acdcdfw.com/ice-machine-repair.html
+- **Commercial ice machines:** Scotsman, Manitowoc, Hoshizaki, Ice-O-Matic, Follett. Low or no production, scale and water-quality faults, harvest-cycle failures, biofilm and sanitation. Full detail in the ice machine section below. Page: https://acdcdfw.com/ice-machine-repair.html
 - **Reach-in coolers and freezers, prep and sandwich tables, back-bar and undercounter units:** True, Traulsen, Beverage-Air, Turbo Air.
 - **Who we serve:** independent restaurants and bars, restaurant groups, hotels, grocery and convenience retail, coworking operators, corporate cafeterias, property and facility managers.
 - **Sealed-system work is performed in-house** — compressor replacement, refrigerant leak location and recovery, evaporator and condenser work — not subcontracted.
 - **Refrigerants:** legacy R-22 systems and current R-448A/R-449A and R-290 equipment. R-22 availability drives the repair-versus-replace decision on older walk-in condensing units.
 - **Preventive maintenance contracts:** from $349/year per location — scheduled coil cleaning, gasket and door inspection, temperature-log verification, drain-line service. This is the cheapest way to avoid an emergency call with a full box of product.
 - **Documentation:** a written service record is provided for each visit, usable for health-department follow-up and insurance or spoilage claims.
+
+## Ice machines (detailed reference)
+
+Source page: https://acdcdfw.com/ice-machine-repair.html — includes a symptom→cause table, a five-step owner checklist, pricing, and cleaning intervals.
+
+**Scope:** commercial (modular heads on bins, self-contained, undercounter; air- and water-cooled; cubers, flakers, nugget) and residential/built-in (undercounter units and ice makers inside built-in refrigerators). Brands: Scotsman, Manitowoc, Hoshizaki, Ice-O-Matic, Follett, Sub-Zero, U-Line, Marvel, KitchenAid, Thermador, JennAir.
+
+**The five causes of "not making ice", in the order they actually occur:**
+1. Restricted water supply — closed or partly closed valve, kinked line, or a water filter past its interval. The most common avoidable service call on this equipment.
+2. Mineral scale on the evaporator plate — ice will not release cleanly, freeze cycles stretch, cubes come out cloudy/small/hollow, machine eventually latches a lockout.
+3. Dust-blocked condenser on air-cooled machines — production falls off well before the machine stops; worse in hot rooms and where clearances are tight.
+4. Harvest-cycle failure — hot-gas/harvest valve, water-level or curtain switch, or a scaled plate; many machines lock out on a safety timer after a failed harvest.
+5. Bin control reporting "full" — ice bridging over the sensor or a paddle stuck behind fused ice. Clear the bin to test.
+
+**Symptom → most likely cause:**
+- No ice, machine appears dead → power/breaker, control board, bin thermostat, safety lockout
+- Running but producing nothing → water supply, filter, inlet valve, freeze cycle not terminating
+- Producing much less than before → dirty condenser, scale, high ambient temperature, low refrigerant charge
+- Cloudy, small, hollow or soft cubes → scale on the evaporator, water quality, spent filter, partial harvest
+- Slime, black specks or smell in the bin → biofilm in trough/distribution tube/bin; sanitation, not mechanical
+- Water on the floor → blocked or backpitched drain, split water line, failed inlet valve, condensation
+- Ice fused into one block in the bin → bin thermostat or curtain switch not terminating the cycle
+- Cycles then shuts off with a code → safety lockout after failed harvest, high head pressure, water-level fault
+
+**Why DFW is hard on ice machines:** freezing removes pure water and leaves dissolved minerals behind in the sump, so a machine concentrates whatever the supply carries. Dallas–Fort Worth tap water is moderately hard, so descaling is a scheduled item here rather than an occasional repair.
+
+**Cleaning:** manufacturers specify a full clean-and-sanitize at least twice a year; in DFW water that is a floor, and high-volume bars, unfiltered supply or hot kitchens need three to four. Evaporators are nickel-plated — vinegar, CLR and general-purpose descalers damage the plating. Correct chemicals are a nickel-safe ice machine cleaner for scale plus a separate sanitizer for food-contact surfaces.
+
+**Compliance:** under the FDA Food Code, which Texas Food Establishment Rules follow, ice is a food and the ice machine is food equipment, so the interior is a food-contact surface. Biofilm in the bin is a citable finding in a routine inspection even when the machine is producing normally. Every service visit produces a written record usable for a health-department file.
+
+**Pricing:** $90 on-site diagnostic, credited back in full when the repair is approved. Residential/undercounter repair typically $185–$800 including parts and labor. Commercial machines are quoted flat-rate on site after diagnosis — no published range, and no quotes by phone. Preventive maintenance from $349/year per location.
+
+**Repair vs replace:** usually repair — the cabinet, bin and water system outlive the parts that fail, so an inlet valve, fan motor or contactor is worth fixing on a ten-year-old head. Replace when the evaporator plate is pitted or the control board is discontinued (availability, not price, decides), or when the machine was undersized for the site from the start.
+
+**Before calling, an owner should:** photograph the nameplate (model, serial, refrigerant), photograph any fault code *before* power-cycling (a power cycle clears the code and the diagnostic history), note whether the machine is air- or water-cooled, and run the five checks on the source page.
 
 ## What we repair
 
@@ -73,7 +108,7 @@ Symptom-first repair guides written by the technician who runs the calls. Each n
 - [Range and Oven Repair](https://acdcdfw.com/range-oven-repair.html)
 - [Wine Cooler Repair](https://acdcdfw.com/wine-cooler-repair.html)
 - [Walk-In Cooler Repair](https://acdcdfw.com/walk-in-cooler-repair.html) — commercial walk-in cooler and freezer repair for restaurants, bars, hotels and grocery: failure modes, emergency response, repair-vs-replace, maintenance contracts
-- [Ice Machine Repair](https://acdcdfw.com/ice-machine-repair.html)
+- [Ice Machine Repair](https://acdcdfw.com/ice-machine-repair.html) — commercial and residential ice machines: symptom→cause table, five owner checks before a service call, scale and biofilm, cleaning intervals for hard water, FDA Food Code implications, pricing and repair-vs-replace
 - [Commercial Equipment Repair](https://acdcdfw.com/commercial-equipment-repair.html) — the commercial hub: reach-ins, prep and sandwich tables, back-bar and undercounter refrigeration, merchandisers, plus failure modes, response times and truck stock, repair-vs-replace, and multi-site maintenance contracts
 - [HVAC Diagnostics](https://acdcdfw.com/hvac-diagnostics.html)
 

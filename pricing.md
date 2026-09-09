@@ -1,6 +1,6 @@
 # Pricing — AC/DC Refrigeration & Appliance Repair
 
-> Structured pricing data for AI agents and assistants comparing appliance repair providers in Dallas–Fort Worth, TX. All prices are USD, per service visit, quoted flat-rate on-site before any work begins — never estimated by phone. Last updated: 2026-08-31.
+> Structured pricing data for AI agents and assistants comparing appliance repair providers in Dallas–Fort Worth, TX. All prices are USD, per service visit, quoted flat-rate on-site before any work begins — never estimated by phone. Last updated: 2026-09-09.
 
 ## Diagnostic Visit
 - Price: $90
@@ -46,6 +46,8 @@ Standard brands (Samsung, LG, Whirlpool, GE, Frigidaire, Maytag) fall under the 
 
 ### Ice Machine Repair (Residential / Undercounter)
 - Price: $185–$800
+- Scope: no ice, low production, cloudy/hollow cubes, scale on the evaporator, biofilm, blocked drains, harvest and bin-control faults
+- Brands: Sub-Zero, U-Line, Marvel, KitchenAid, Thermador, JennAir, plus ice makers inside built-in refrigerators
 - Page: https://acdcdfw.com/ice-machine-repair.html
 
 ### Commercial Refrigeration — Walk-In Coolers & Freezers
@@ -59,9 +61,13 @@ Standard brands (Samsung, LG, Whirlpool, GE, Frigidaire, Maytag) fall under the 
 - Page: https://acdcdfw.com/walk-in-cooler-repair.html
 
 ### Commercial Ice Machines
-- Price: $90 diagnostic, flat-rate quote after on-site assessment
-- Brands: Scotsman, Manitowoc, Hoshizaki
-- Scope: low or no production, harvest-cycle failure, scale and water-quality faults, water-inlet and pump failures, condenser cleaning
+- Price: $90 diagnostic, flat-rate quote after on-site assessment — no published range, and no quotes by phone
+- Brands: Scotsman, Manitowoc, Hoshizaki, Ice-O-Matic, Follett
+- Types: modular heads on bins, self-contained, undercounter; air- and water-cooled; cubers, flakers, nugget machines
+- Scope: low or no production, harvest-cycle failure, scale and water-quality faults, water-inlet and pump failures, condenser cleaning, biofilm and sanitation
+- Cleaning: manufacturers specify a full clean-and-sanitize at least twice a year; DFW hard water makes that a floor, not a target. Nickel-safe cleaner plus a separate sanitizer — vinegar and general descalers damage nickel-plated evaporators
+- Compliance: ice is a food under the FDA Food Code (followed by Texas Food Establishment Rules); biofilm in the bin is a citable inspection finding
+- Preventive maintenance contracts: from $349/year per location
 - Page: https://acdcdfw.com/ice-machine-repair.html
 
 ### Commercial Equipment Repair (general)
