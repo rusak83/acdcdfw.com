@@ -259,7 +259,7 @@
       }
       if (phoneNumberPattern.test(element.textContent)) {
         element.textContent = element.textContent.replace(phoneNumberPattern, formattedPhone);
-      } else {
+      } else if (!/[a-z]/i.test(element.textContent)) {
         element.textContent = formattedPhone;
       }
     });

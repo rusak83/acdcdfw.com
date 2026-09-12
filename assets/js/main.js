@@ -222,7 +222,7 @@
       }
       if (phoneNumberPattern.test(el.textContent)) {
         el.textContent = el.textContent.replace(phoneNumberPattern, formattedPhone);
-      } else if (el.textContent.match(/[\d\(\)\-\s]+/)) {
+      } else if (!/[a-z]/i.test(el.textContent)) {
         el.textContent = formattedPhone;
       }
     });
