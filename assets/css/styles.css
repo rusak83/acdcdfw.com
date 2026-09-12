@@ -1455,3 +1455,22 @@ html { scroll-behavior: smooth; }
   line-height: 1.5;
   color: var(--color-muted, #475569);
 }
+
+/* Symptom rows are link targets — keep them clear of the sticky header,
+   and flag the one the visitor actually asked for. */
+.data-table tr[id] { scroll-margin-top: 96px; }
+.data-table tr[id]:target { background: rgba(0,31,146,0.07); box-shadow: inset 3px 0 0 var(--color-primary); }
+
+/* Query-phrased symptom links on brand pages */
+.symptom-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 1.5rem; margin-top: 1.25rem; }
+.symptom-links a {
+  display: block;
+  padding: 11px 0 11px 20px;
+  border-bottom: 1px solid var(--color-border, #dbe4f1);
+  color: var(--color-dark, #0f172a);
+  text-decoration: none;
+  font-size: 0.95rem;
+  position: relative;
+}
+.symptom-links a::before { content: '›'; position: absolute; left: 4px; color: var(--color-primary); font-weight: 700; }
+.symptom-links a:hover { color: var(--color-primary); }
