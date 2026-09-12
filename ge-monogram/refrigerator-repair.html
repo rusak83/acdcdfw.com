@@ -225,10 +225,12 @@
  <label for="lead-phone-gemonogram-fridge">Phone</label>
  <input id="lead-phone-gemonogram-fridge" type="tel" name="phone" placeholder="(469) 000-0000" required>
  </div>
- <div class="form-group">
- <label for="lead-business-gemonogram-fridge">Model number (if known)</label>
- <input id="lead-business-gemonogram-fridge" type="text" name="business" placeholder="Starts with ZIS, ZIC or ZIP">
- </div>
+ <input type="hidden" name="business" value="GE Monogram">
+                    <div class="form-group">
+                      <label for="lead-age-gemonogram-fridge">How old is it?</label>
+                      <input id="lead-age-gemonogram-fridge" type="text" name="age" placeholder="e.g. 3 years, or 2019">
+                      <span class="form-hint">Not sure? The data tag is inside the freezer, top-left as you open the door &mdash; model and serial are on it. If the unit is only a year or two old it is probably still under GE Monogram warranty and that repair should be free through them. We will tell you so rather than take the trip.</span>
+                    </div>
  <div class="form-group">
  <label for="lead-issue-gemonogram-fridge">What's happening?</label>
  <textarea id="lead-issue-gemonogram-fridge" name="issue" placeholder="Ice maker stopped, fridge warm but freezer cold, water under the unit.." required></textarea>

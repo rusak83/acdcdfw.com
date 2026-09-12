@@ -163,10 +163,12 @@
  <label for="lead-phone-sub-zero-top">Phone</label>
  <input id="lead-phone-sub-zero-top" type="tel" name="phone" placeholder="(469) 000-0000" required>
  </div>
- <div class="form-group">
- <label for="lead-business-sub-zero-top">Brand / model (if known)</label>
- <input id="lead-business-sub-zero-top" type="text" name="business" placeholder="Model number, if known">
- </div>
+ <input type="hidden" name="business" value="Sub-Zero">
+                    <div class="form-group">
+                      <label for="lead-age-sub-zero-top">How old is it?</label>
+                      <input id="lead-age-sub-zero-top" type="text" name="age" placeholder="e.g. 3 years, or 2019">
+                      <span class="form-hint">Not sure? The data tag is inside the freezer, top-left as you open the door &mdash; model and serial are on it. If the unit is only a year or two old it is probably still under Sub-Zero warranty and that repair should be free through them. We will tell you so rather than take the trip.</span>
+                    </div>
  <div class="form-group">
  <label for="lead-issue-sub-zero-top">What's happening?</label>
  <textarea id="lead-issue-sub-zero-top" name="issue" placeholder="Not cooling, won't start, error code." required></textarea>
@@ -274,6 +276,30 @@
  </div>
  </section>
 
+  <section class="section section-white">
+    <div class="container" style="max-width:900px">
+      <div class="section-header">
+        <span class="section-label">From Real Sub-Zero Calls</span>
+        <h2>What These Faults Actually Look Like</h2>
+      </div>
+      <div class="job-photo-split">
+        <figure class="job-photo">
+          <picture>
+            <source srcset="/assets/images/work/built-in-evaporator-frost-closeup.webp" type="image/webp">
+            <img src="/assets/images/work/built-in-evaporator-frost-closeup.jpg" alt="Evaporator coil of a built-in refrigerator completely encased in frost, photographed during a service call" width="1200" height="900" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>An evaporator sealed in ice behind the rear panel. The unit was still running &mdash; that is exactly why the owner assumed the compressor was fine and the problem was something else.</figcaption>
+        </figure>
+        <div>
+          <h3 style="margin-top:0">Why &ldquo;still running&rdquo; misleads people</h3>
+          <p>A Sub-Zero with a defrost fault keeps humming, the condenser keeps turning, and every light behaves. Nothing announces a failure. Meanwhile the coil is bridged with frost and moving no air at all, so one compartment climbs while the other stays cold.</p>
+          <p class="text-muted">Which is why we take temperatures in the compartment rather than trusting the display, before anyone opens a sealed system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
  <section class="cta-section">
  <div class="container">
  <h2>Sub-Zero Acting Up?</h2>
@@ -320,7 +346,40 @@
  </section>
 
  <!-- === TESTIMONIALS === -->
- <section class="section">
+   <section class="section">
+    <div class="container" style="max-width:900px">
+      <div class="section-header">
+        <span class="section-label">How the Visit Goes</span>
+        <h2>Your Kitchen Gets Put Back the Way It Was</h2>
+      </div>
+      <div class="job-photo-split">
+        <figure class="job-photo">
+          <picture>
+            <source srcset="/assets/images/work/sub-zero-built-in-kitchen-complete.webp" type="image/webp">
+            <img src="/assets/images/work/sub-zero-built-in-kitchen-complete.jpg" alt="Built-in side-by-side refrigerator back in its cabinet opening after a service call, floor protection still in place" width="1075" height="1200" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>End of a call: unit back in its opening, trim reseated, floor covering still down until we leave.</figcaption>
+        </figure>
+        <figure class="job-photo">
+          <picture>
+            <source srcset="/assets/images/work/sealed-system-kit-residential-kitchen.webp" type="image/webp">
+            <img src="/assets/images/work/sealed-system-kit-residential-kitchen.jpg" alt="Sealed-system equipment and a Sub-Zero parts box staged on floor protection in a residential kitchen during a repair" width="1200" height="896" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Recovery machine, gauges, nitrogen, torch &mdash; and a Sub-Zero parts box. Sealed-system work happens here, in your kitchen, not at a subcontractor&rsquo;s shop next week.</figcaption>
+        </figure>
+      </div>
+      <p style="max-width:760px;margin-inline:auto;">A Sub-Zero column is fitted to a cabinet opening, often with a custom panel on the door. Getting it out and back without marking the surround is a real part of the job &mdash; and the part a general appliance tech is usually not set up for. Floor protection goes down before anything moves.</p>
+      <figure class="job-photo job-photo-tall" style="max-width:380px;">
+        <picture>
+          <source srcset="/assets/images/work/sub-zero-food-storage-guide-card.webp" type="image/webp">
+          <img src="/assets/images/work/sub-zero-food-storage-guide-card.jpg" alt="Sub-Zero branded food storage guide card removed from a built-in refrigerator during a service call" width="1200" height="1200" loading="lazy" decoding="async">
+        </picture>
+        <figcaption>The storage guide out of a Sub-Zero door. Small thing &mdash; but everything that comes out of the unit goes back where it belongs.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
  <div class="container">
  <div class="section-header">
  <span class="section-label">Reviews</span>
@@ -398,10 +457,12 @@
  <label for="lead-phone-sub-zero-bottom">Phone</label>
  <input id="lead-phone-sub-zero-bottom" type="tel" name="phone" placeholder="(469) 000-0000" required>
  </div>
- <div class="form-group">
- <label for="lead-business-sub-zero-bottom">Brand / model (if known)</label>
- <input id="lead-business-sub-zero-bottom" type="text" name="business" placeholder="Model number, if known">
- </div>
+ <input type="hidden" name="business" value="Sub-Zero">
+                    <div class="form-group">
+                      <label for="lead-age-sub-zero-bottom">How old is it?</label>
+                      <input id="lead-age-sub-zero-bottom" type="text" name="age" placeholder="e.g. 3 years, or 2019">
+                      <span class="form-hint">Not sure? The data tag is inside the freezer, top-left as you open the door &mdash; model and serial are on it. If the unit is only a year or two old it is probably still under Sub-Zero warranty and that repair should be free through them. We will tell you so rather than take the trip.</span>
+                    </div>
  <div class="form-group">
  <label for="lead-issue-sub-zero-bottom">What's happening?</label>
  <textarea id="lead-issue-sub-zero-bottom" name="issue" placeholder="Not cooling, won't start, error code." required></textarea>

@@ -129,6 +129,7 @@
       'Name: ' + data.name + '\n' +
       'Phone: ' + data.phone + '\n' +
       (data.business ? 'Business/Brand: ' + data.business + '\n' : '') +
+      (data.age ? 'Appliance age: ' + data.age + '\n' : '') +
       'Problem: ' + data.issue + '\n' +
       'SMS informational consent: ' + data.informationalConsent + '\n' +
       'SMS marketing consent: ' + data.marketingConsent + '\n' +
@@ -155,7 +156,7 @@
       NAME: data.name,
       COMPANY_TITLE: data.business || undefined,
       PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
-      COMMENTS: 'Problem: ' + data.issue + '\nSubmitted from: ' + data.page +
+      COMMENTS: 'Problem: ' + data.issue + (data.age ? '\nAppliance age: ' + data.age : '') + '\nSubmitted from: ' + data.page +
         '\nSMS informational consent: ' + data.informationalConsent +
         '\nSMS marketing consent: ' + data.marketingConsent +
         '\nConsent given ' + data.consentTimestamp + ' from IP ' + data.consentIp,
@@ -228,6 +229,7 @@
           name: (fd.get('name') || '').toString().trim(),
           phone: (fd.get('phone') || '').toString().trim(),
           business: (fd.get('business') || '').toString().trim(),
+          age: (fd.get('age') || '').toString().trim(),
           issue: (fd.get('issue') || '').toString().trim(),
           informationalConsent: fd.get('sms_informational_consent') === 'on',
           marketingConsent: fd.get('sms_marketing_consent') === 'on',
