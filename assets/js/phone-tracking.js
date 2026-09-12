@@ -242,10 +242,15 @@
     document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
       link.href = `tel:${phone}`;
       if (phoneNumberPattern.test(link.textContent)) {
+        // label already shows a number — swap just the number, keep any wording around it
         link.textContent = link.textContent.replace(phoneNumberPattern, formattedPhone);
-      } else if (link.textContent.match(/[\d\(\)\-\s]+/)) {
+      } else if (!/[a-z]/i.test(link.textContent)) {
+        // label is digits/symbols only — safe to replace wholesale
         link.textContent = formattedPhone;
       }
+      // otherwise the label is descriptive ("Call Now", "Schedule Service") — leave the
+      // wording alone and let the href carry the tracked number. The old fallback matched
+      // any text containing a space and overwrote these labels with the phone number.
     });
 
     document.querySelectorAll('.phone-number, [data-phone], .cat-button').forEach(function(element) {

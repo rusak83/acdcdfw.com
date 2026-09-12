@@ -205,10 +205,15 @@
     document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
       link.href = 'tel:' + phone;
       if (phoneNumberPattern.test(link.textContent)) {
+        // label already shows a number — swap the number, keep the wording around it
         link.textContent = link.textContent.replace(phoneNumberPattern, formattedPhone);
-      } else if (link.textContent.match(/[\d\(\)\-\s]+/)) {
+      } else if (!/[a-z]/i.test(link.textContent)) {
+        // label is digits/symbols only — safe to replace wholesale
         link.textContent = formattedPhone;
       }
+      // descriptive labels ("Call Now", "Schedule Service") keep their wording; the
+      // tracked number rides on the href. The old fallback matched any text with a
+      // space in it and overwrote those labels with the phone number.
     });
 
     document.querySelectorAll('.phone-number, [data-phone], .cat-button').forEach(function (el) {

@@ -828,13 +828,18 @@ h4 { font-size: 1.05rem; }
 }
 
 /* === STICKY MOBILE CALL BUTTON === */
-.sticky-call {
+.sticky-call,
+.sticky-bar {
   display: none;
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
+  bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  left: 0.75rem;
+  right: 0.75rem;
   z-index: 8888;
+  gap: 8px;
+}
+/* legacy single-button variant, kept so any page not yet migrated still works */
+.sticky-call {
   background: var(--color-cta);
   color: var(--color-white);
   text-align: center;
@@ -845,6 +850,31 @@ h4 { font-size: 1.05rem; }
   text-decoration: none;
   box-shadow: 0 8px 28px rgba(0,31,146,0.45);
   letter-spacing: 0.01em;
+}
+.sticky-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  padding: 15px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sticky-btn-call {
+  background: var(--color-cta);
+  color: var(--color-white);
+  box-shadow: 0 8px 28px rgba(0,31,146,0.45);
+}
+.sticky-btn-book {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 8px 24px rgba(15,23,42,0.18);
 }
 
 /* === BREADCRUMBS === */
@@ -1042,7 +1072,8 @@ h4 { font-size: 1.05rem; }
   .hero-home .hero-cta-row .btn { width: 100%; }
   .section { padding: 56px 0; }
   .sticky-call { display: block; }
-  body { padding-bottom: 72px; }
+  .sticky-bar { display: flex; }
+  body { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)); }
   .footer-grid { grid-template-columns: 1fr; }
   .trust-items { flex-direction: column; gap: 1rem; }
   .nav-cta { font-size: 0.8rem; padding: 8px 14px; }
