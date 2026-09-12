@@ -1474,3 +1474,14 @@ html { scroll-behavior: smooth; }
 }
 .symptom-links a::before { content: '›'; position: absolute; left: 4px; color: var(--color-primary); font-weight: 700; }
 .symptom-links a:hover { color: var(--color-primary); }
+
+/* Jump bar on a light background (blog articles) — the base style is for the dark hero */
+.jump-bar-light { justify-content: flex-start; }
+.jump-bar-light a {
+  background: var(--color-surface-card, #f7f8ff);
+  border-color: var(--color-border-card, #dde3ff);
+  color: var(--color-primary, #001F92);
+}
+.jump-bar-light a:hover,
+.jump-bar-light a:focus-visible { background: #fff; border-color: var(--color-primary, #001F92); }
+.jump-bar-light a.jump-call { background: var(--color-primary, #001F92); color: #fff; border-color: var(--color-primary, #001F92); }
