@@ -1485,3 +1485,16 @@ html { scroll-behavior: smooth; }
 .jump-bar-light a:hover,
 .jump-bar-light a:focus-visible { background: #fff; border-color: var(--color-primary, #001F92); }
 .jump-bar-light a.jump-call { background: var(--color-primary, #001F92); color: #fff; border-color: var(--color-primary, #001F92); }
+
+/* .btn-secondary is white-on-transparent, built for the dark hero. On a light
+   section it rendered invisible — white text on a white card. */
+.section-white .btn-secondary,
+.section:not(.urgent-cta):not(.cta-section) .btn-secondary {
+  border-color: var(--color-primary, #001F92);
+  color: var(--color-primary, #001F92);
+}
+.section-white .btn-secondary:hover,
+.section:not(.urgent-cta):not(.cta-section) .btn-secondary:hover {
+  background: var(--color-primary, #001F92);
+  color: #fff;
+}
