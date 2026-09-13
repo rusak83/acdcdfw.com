@@ -156,7 +156,7 @@
       NAME: data.name,
       COMPANY_TITLE: data.business || undefined,
       PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
-      COMMENTS: 'Problem: ' + data.issue + (data.age ? '\nAppliance age: ' + data.age : '') + '\nSubmitted from: ' + data.page +
+      COMMENTS: 'Problem: ' + data.issue + (data.age ? '\nAppliance age: ' + data.age : '') + '\nSubmitted from: ' + data.page + (data.formId ? '\nForm: ' + data.formId : '') +
         '\nSMS informational consent: ' + data.informationalConsent +
         '\nSMS marketing consent: ' + data.marketingConsent +
         '\nConsent given ' + data.consentTimestamp + ' from IP ' + data.consentIp,
@@ -233,7 +233,8 @@
           issue: (fd.get('issue') || '').toString().trim(),
           informationalConsent: fd.get('sms_informational_consent') === 'on',
           marketingConsent: fd.get('sms_marketing_consent') === 'on',
-          page: window.location.pathname
+          page: window.location.pathname,
+          formId: form.id || ''
         };
 
         if (!data.name || !data.phone || !data.issue) {
@@ -274,10 +275,11 @@
           }).then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
             .then(function (r) {
               if (!r.ok || !r.json || r.json.error || !r.json.result) throw new Error(r.json && r.json.error_description || 'bad response');
-              pushDataLayer('generate_lead', { lead_source: 'commercial_page_form' });
+              pushDataLayer('generate_lead', { lead_source: 'commercial_page_form', lead_form_element_id: form.id || 'unnamed' });
               sendMeasurementProtocolHit('generate_lead', {
                 lead_source: 'commercial_page_form',
                 lead_form_id: 'commercial-lead-form',
+                lead_form_element_id: form.id || 'unnamed',
                 lead_id: String(r.json.result)
               });
               form.reset();
