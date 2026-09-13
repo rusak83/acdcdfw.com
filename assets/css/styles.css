@@ -1497,3 +1497,23 @@ html { scroll-behavior: smooth; }
   background: var(--color-primary, #001F92);
   color: #fff;
 }
+
+/* ---------------------------------------------------------------
+   WCAG 1.4.1 — a link sitting inside body copy has to be tellable
+   from ordinary text without relying on colour. Lighthouse flagged
+   these as "links rely on colour alone".
+
+   Scoped to UNCLASSED links on purpose: every button, chip, card,
+   nav item, jump-bar entry and symptom link on this site carries a
+   class, so none of them inherit an underline. Verified live —
+   0 classed links sit inside p/li/td/dd.
+   --------------------------------------------------------------- */
+p a:not([class]),
+li a:not([class]),
+td a:not([class]),
+dd a:not([class]),
+.s a:not([class]) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: from-font;
+}
