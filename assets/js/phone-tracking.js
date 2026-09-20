@@ -5,6 +5,11 @@
   const phoneMapping = {
     'google-cpc': '+14695011201',
     'bing-cpc': '+14692050052',
+    // Fallback for utm_source=bing with no utm_medium. The account-level tracking
+    // template sends utm_source only, so without this the lookup falls through to
+    // 'default' and a paid Bing visitor is shown the organic number. There is no
+    // organic traffic that arrives tagged utm_source=bing, so this cannot misfire.
+    'bing': '+14692050052',
     'facebook-cpc': '+14697514146',
     'facebook-paid': '+14697514146',
     'google-organic': '+14692240577',
@@ -134,6 +139,10 @@
     const key = `${utm.source}-${utm.medium}`.toLowerCase();
     if (key === 'google-cpc') return 'Google Ads';
     if (key === 'bing-cpc') return 'Bing Ads';
+    // Same fallback as the phone map above: utm_source=bing with no medium is still
+    // paid Bing. Without this the number would say Bing Ads while the lead recorded
+    // in Bitrix said Direct/Other.
+    if (utm.source === 'bing') return 'Bing Ads';
     if (key === 'facebook-cpc' || key === 'facebook-paid') return 'Facebook Ads';
     if (utm.source === 'google' && !utm.medium) return 'Google Organic';
     if (utm.source === 'yelp') return 'Yelp';
