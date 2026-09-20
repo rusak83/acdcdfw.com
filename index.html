@@ -359,10 +359,10 @@
  var loaded=false;
  function load(){ if(loaded)return; loaded=true; var t=document.createElement('script'); t.src='https://apps.elfsight.com/p/platform.js'; t.defer=true; document.body.appendChild(t); }
  var el=document.querySelector('.elfsight-app-27ba2164-9624-4923-84ac-869de3348ad8');
- if(!el||!('IntersectionObserver' in window)){ load; return; }
- var io=new IntersectionObserver(function(e){ if(e[0].isIntersecting){ io.disconnect; load; } },{rootMargin:'600px'});
+ if(!el||!('IntersectionObserver' in window)){ load(); return; }
+ var io=new IntersectionObserver(function(e){ if(e[0].isIntersecting){ io.disconnect(); load(); } },{rootMargin:'600px'});
  io.observe(el);
- });
+ })();
  </script>
  <div style="text-align:center;margin-top:2rem;">
  <a class="rs-book" href="/reviews.html">See All Reviews</a>
