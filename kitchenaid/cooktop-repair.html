@@ -207,6 +207,10 @@
           <form class="lead-form contact-form" id="lead-kitchenaid-cooktop-mid">
             <div class="form-group"><label for="name-ka-cooktop-mid">Full name</label><input id="name-ka-cooktop-mid" type="text" name="name" placeholder="Jane Smith" required></div>
             <div class="form-group"><label for="phone-ka-cooktop-mid">Phone</label><input id="phone-ka-cooktop-mid" type="tel" name="phone" placeholder="(469) 000-0000" required></div>
+            <div class="form-group">
+              <label for="zip-ka-cooktop-mid">ZIP code</label>
+              <input id="zip-ka-cooktop-mid" type="text" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" placeholder="76051" required>
+            </div>
             <input type="hidden" name="business" value="KitchenAid">
             <div class="form-group"><label for="type-ka-cooktop-mid">Gas, radiant or induction?</label><input id="type-ka-cooktop-mid" type="text" name="age" placeholder="e.g. 36&quot; gas, or radiant glass, plus model number"><span class="form-hint">The model number is on a label on the underside. If the unit is only a year or two old it is probably still under KitchenAid warranty and that repair should be free through them &mdash; we will tell you so rather than take the trip.</span></div>
             <div class="form-group"><label for="issue-ka-cooktop-mid">What&rsquo;s happening?</label><textarea id="issue-ka-cooktop-mid" name="issue" placeholder="Front left burner clicks but never lights, the other three are fine..." required></textarea></div>
@@ -311,6 +315,10 @@
           <div class="form-group">
             <label for="phone-kitchenaid-cooktop-repair">Phone</label>
             <input id="phone-kitchenaid-cooktop-repair" type="tel" name="phone" placeholder="(469) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="zip-kitchenaid-cooktop-repair">ZIP code</label>
+            <input id="zip-kitchenaid-cooktop-repair" type="text" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" placeholder="76051" required>
           </div>
           <input type="hidden" name="business" value="KitchenAid">
               <div class="form-group">

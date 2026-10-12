@@ -230,6 +230,10 @@
           <form class="lead-form contact-form" id="range-oven-lead-form">
             <div class="form-group"><label for="lead-name">Full name</label><input id="lead-name" type="text" name="name" placeholder="Jane Smith" required></div>
             <div class="form-group"><label for="lead-phone">Phone</label><input id="lead-phone" type="tel" name="phone" placeholder="(469) 000-0000" required></div>
+            <div class="form-group">
+              <label for="lead-zip">ZIP code</label>
+              <input id="lead-zip" type="text" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" placeholder="76051" required>
+            </div>
             <div class="form-group"><label for="lead-business">Brand / model (if known)</label><input id="lead-business" type="text" name="business" placeholder="e.g. Wolf DF484, Thermador PRD48"></div>
             <div class="form-group"><label for="lead-issue">What's happening?</label><textarea id="lead-issue" name="issue" placeholder="Oven won't heat, igniter glows but the burner never lights..." required></textarea></div>
             <div class="form-group form-group-consent"><label class="consent-check"><input type="checkbox" name="sms_informational_consent" required><span>I consent to receive informational text messages (appointment updates, technician en route alerts, and service reminders) from AC-DC HVAC &amp; Appliance Repair LLC at the phone number provided above. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. See our <a href="/sms-terms.html" target="_blank" rel="noopener">SMS Terms &amp; Conditions</a>.</span></label></div>
