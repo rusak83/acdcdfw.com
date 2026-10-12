@@ -128,6 +128,7 @@
     var body = encodeURIComponent(
       'Name: ' + data.name + '\n' +
       'Phone: ' + data.phone + '\n' +
+      (data.zip ? 'ZIP: ' + data.zip + '\n' : '') +
       (data.business ? 'Business/Brand: ' + data.business + '\n' : '') +
       (data.age ? 'Appliance age: ' + data.age + '\n' : '') +
       'Problem: ' + data.issue + '\n' +
@@ -156,6 +157,7 @@
       NAME: data.name,
       COMPANY_TITLE: data.business || undefined,
       PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
+      ADDRESS_POSTAL_CODE: data.zip || undefined,
       COMMENTS: 'Problem: ' + data.issue + (data.age ? '\nAppliance age: ' + data.age : '') + '\nSubmitted from: ' + data.page + (data.formId ? '\nForm: ' + data.formId : '') +
         '\nSMS informational consent: ' + data.informationalConsent +
         '\nSMS marketing consent: ' + data.marketingConsent +
@@ -228,6 +230,7 @@
         var data = {
           name: (fd.get('name') || '').toString().trim(),
           phone: (fd.get('phone') || '').toString().trim(),
+          zip: (fd.get('zip') || '').toString().trim(),
           business: (fd.get('business') || '').toString().trim(),
           age: (fd.get('age') || '').toString().trim(),
           issue: (fd.get('issue') || '').toString().trim(),
@@ -239,6 +242,14 @@
 
         if (!data.name || !data.phone || !data.issue) {
           setStatus(form, 'Please fill in every field so we can call you back fast.', true);
+          return;
+        }
+
+        // ZIP exists only on forms that include a zip input (booking modal). Where the input is
+        // required it must be a 5-digit US ZIP; where it is absent or optional, blank is fine.
+        var zipInput = form.querySelector('input[name="zip"]');
+        if (zipInput && ((zipInput.required && !data.zip) || (data.zip && !/^\d{5}$/.test(data.zip)))) {
+          setStatus(form, 'Please enter a 5-digit ZIP code so we know which technician is closest.', true);
           return;
         }
 

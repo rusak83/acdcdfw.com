@@ -26,6 +26,10 @@
               '<input id="booking-modal-phone" type="tel" name="phone" placeholder="(469) 000-0000" required>' +
             '</div>' +
             '<div class="form-group">' +
+              '<label for="booking-modal-zip">ZIP code</label>' +
+              '<input id="booking-modal-zip" type="text" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" placeholder="76051" required>' +
+            '</div>' +
+            '<div class="form-group">' +
               '<label for="booking-modal-business">Brand / model (if known)</label>' +
               '<input id="booking-modal-business" type="text" name="business" placeholder="Sub-Zero, Samsung, etc.">' +
             '</div>' +
