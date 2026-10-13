@@ -253,12 +253,8 @@
           return;
         }
 
-        // Informational consent (appointment/service texts) is required to submit.
-        // Marketing consent is a separate, optional opt-in — never required.
-        if (!data.informationalConsent) {
-          setStatus(form, 'Please check the SMS consent box so we can text you back.', true);
-          return;
-        }
+        // SMS consent boxes are optional and unchecked by default. The lead is submitted either way;
+        // consent state is recorded on the lead (SMS informational consent: true/false) so SMS is only sent when it is true.
 
         var submitBtn = form.querySelector('button[type="submit"]');
         if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
