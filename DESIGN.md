@@ -1,4 +1,4 @@
-# DESIGN.md — ACDC Home Services (acdcdfw.com)
+# DESIGN.md — AC/DC Refrigeration & Appliance Repair (acdcdfw.com)
 
 > Source of truth for visual design. Claude Code: read this before touching any
 > page or `assets/css/styles.css`, and run the **Pre-Flight Checklist** at the bottom
