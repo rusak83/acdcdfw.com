@@ -55,6 +55,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script src="/assets/js/phone-tracking.js" defer></script>
+  <script src="/assets/js/lead-form.js" defer></script>
 </head>
 <body class="acdc">
 
@@ -293,6 +294,44 @@
   </section>
 
   <!-- CTA -->
+  <section class="section">
+    <div class="container" style="max-width:600px">
+      <div class="section-header text-center">
+        <span class="section-label">Get a Callback</span>
+        <h2>Cannot Call Right Now?</h2>
+        <p class="text-muted">Leave your details and the model number if you have it. We will call you back, and if it is outside service hours we will get you onto the schedule for the next convenient day.</p>
+      </div>
+      <div class="lead-form-card">
+        <form class="lead-form contact-form" id="lead-form-wolf-oven">
+          <div class="form-group">
+            <label for="lead-name-wolf-oven">Full name</label>
+            <input id="lead-name-wolf-oven" type="text" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-phone-wolf-oven">Phone</label>
+            <input id="lead-phone-wolf-oven" type="tel" name="phone" placeholder="(469) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-business-wolf-oven">Model number (if known)</label>
+            <input id="lead-business-wolf-oven" type="text" name="business" placeholder="On the frame behind the door, left side">
+          </div>
+          <div class="form-group">
+            <label for="lead-issue-wolf-oven">What's happening?</label>
+            <textarea id="lead-issue-wolf-oven" name="issue" placeholder="Oven not heating, uneven baking, door not sealing..." required></textarea>
+          </div>
+          <div class="form-group form-group-consent">
+            <label class="consent-check">
+              <input type="checkbox" name="sms_consent" required>
+              <span>By checking this box, I consent to receive text messages (appointment updates, service reminders, and occasional promotional offers) from AC-DC HVAC &amp; Appliance Repair LLC at the phone number provided above. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="/sms-terms.html" target="_blank" rel="noopener">SMS Terms &amp; Conditions</a>.</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Request a Callback</button>
+          <div class="lead-form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-section">
     <div class="container">
       <h2>Wolf Oven Down? Call Today.</h2>
